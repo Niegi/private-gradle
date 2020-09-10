@@ -1,0 +1,17 @@
+/.idea/*
+!/.idea/codeStyles/
+**/*.iml
+**/*.jar
+**/*.retry
+!gradle/wrapper/gradle-wrapper.jar
+**/target/
+**/logs/
+**/build/
+*/out/
+out/
+gradle_local_cache/
+/src/main/java/other/Constants.java
+
+.gradle
+.serverless
+.terraform
