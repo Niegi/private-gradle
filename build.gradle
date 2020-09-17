@@ -22,7 +22,8 @@ dependencies {
             'org.mockito:mockito-junit-jupiter:3.4.4',
             'com.fasterxml.jackson.core:jackson-databind:2.0.1',
             'redis.clients:jedis:3.3.0',
-            'org.mongodb:mongodb-driver:3.6.3'
+            'org.mongodb:mongodb-driver:3.6.3',
+            'io.projectreactor:reactor-core:3.3.10.RELEASE'
     )
 
     testRuntimeOnly(
