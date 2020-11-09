@@ -23,7 +23,8 @@ dependencies {
             'com.fasterxml.jackson.core:jackson-databind:2.0.1',
             'redis.clients:jedis:3.3.0',
             'org.mongodb:mongodb-driver:3.6.3',
-            'io.projectreactor:reactor-core:3.3.10.RELEASE'
+            'io.projectreactor:reactor-core:3.3.10.RELEASE',
+            'com.google.code.gson:gson:2.8.6'
     )
 
     testRuntimeOnly(
