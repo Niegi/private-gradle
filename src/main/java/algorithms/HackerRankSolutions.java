@@ -12,13 +12,13 @@ public class HackerRankSolutions {
         System.out.println(makeAnagram(a, b));
     }
 
-//    Complete the hackerrankInString function in the editor below. It must return YES or NO.
+    //    Complete the hackerrankInString function in the editor below. It must return YES or NO.
 //    For each query, print YES on a new line if s contains 'hackerrank', otherwise, print NO.
     static String hackerrankInString(String s) {
 
         List<String> listOfStrings = Arrays.asList(s.split("\\R"));
         String returnedString = "";
-        char[] hackerrank = {'h','a','c','k','e','r','r','a','n','k'};
+        char[] hackerrank = {'h', 'a', 'c', 'k', 'e', 'r', 'r', 'a', 'n', 'k'};
         for (String str : listOfStrings) {
             int currentPositionInString = 0;
             boolean contain = true;
@@ -41,12 +41,12 @@ public class HackerRankSolutions {
 
     // Complete the marsExploration function below. Check the number of errors in SOSSOSSOS chain
     static int marsExploration(String s) {
-        int numberOfChanges=0;
-        for (int i=0 ; i<s.length() ; i++) {
-            if ((i%3==0 || i%3==2) && !s.substring(i, i+1).equals("S")) {
+        int numberOfChanges = 0;
+        for (int i = 0; i < s.length(); i++) {
+            if ((i % 3 == 0 || i % 3 == 2) && !s.substring(i, i + 1).equals("S")) {
                 numberOfChanges++;
             }
-            if (i%3==1 && !s.substring(i, i+1).equals("O")) {
+            if (i % 3 == 1 && !s.substring(i, i + 1).equals("O")) {
                 numberOfChanges++;
             }
         }
@@ -62,18 +62,18 @@ public class HackerRankSolutions {
 
     public static int pickingNumbers(List<Integer> a) {
         int max = 1;
-        for (int i = 0 ; i < a.size() ; i++ ) {
+        for (int i = 0; i < a.size(); i++) {
             int sameOrHigher = 0;
             int sameOrLower = 0;
-            for (int j = 0 ; j < a.size() ; j++ ) {
+            for (int j = 0; j < a.size(); j++) {
                 if (a.get(j) == a.get(i)) {
                     sameOrHigher++;
                     sameOrLower++;
                 }
-                if (a.get(j) == a.get(i)+1) {
+                if (a.get(j) == a.get(i) + 1) {
                     sameOrHigher++;
                 }
-                if (a.get(j) == a.get(i)-1) {
+                if (a.get(j) == a.get(i) - 1) {
                     sameOrLower++;
                 }
             }
@@ -92,33 +92,33 @@ public class HackerRankSolutions {
         String textWithoutWhiteMarks = s.replaceAll("\\s", "");
         double rowsNumber = Math.floor(Math.sqrt(textWithoutWhiteMarks.length()));
         double columnsNumber = Math.ceil(Math.sqrt(textWithoutWhiteMarks.length()));
-        if (rowsNumber*columnsNumber < textWithoutWhiteMarks.length()) {
+        if (rowsNumber * columnsNumber < textWithoutWhiteMarks.length()) {
             rowsNumber++;
         }
-        char [][] tab = new char[(int) rowsNumber][(int) columnsNumber];
-        int index=0;
-        String encryptedText="";
-        for (int r=0 ; r<rowsNumber ; r++) {
-            for (int c=0 ; c<columnsNumber ; c++) {
+        char[][] tab = new char[(int) rowsNumber][(int) columnsNumber];
+        int index = 0;
+        String encryptedText = "";
+        for (int r = 0; r < rowsNumber; r++) {
+            for (int c = 0; c < columnsNumber; c++) {
                 tab[r][c] = textWithoutWhiteMarks.charAt(index);
                 index++;
-                if (index>=textWithoutWhiteMarks.length()) {
+                if (index >= textWithoutWhiteMarks.length()) {
                     break;
                 }
             }
         }
 
 //        just for testing
-        for (int r=0 ; r<rowsNumber ; r++) {
-            for (int c=0 ; c<columnsNumber ; c++) {
+        for (int r = 0; r < rowsNumber; r++) {
+            for (int c = 0; c < columnsNumber; c++) {
                 System.out.print(tab[r][c]);
             }
             System.out.println();
         }
 //        end of testing
 
-        for (int c=0 ; c<columnsNumber ; c++) {
-            for (int r=0 ; r<rowsNumber ; r++) {
+        for (int c = 0; c < columnsNumber; c++) {
+            for (int r = 0; r < rowsNumber; r++) {
                 if (c == columnsNumber && tab[r][c] != '\u0000') {
                     break;
                 }
@@ -134,9 +134,9 @@ public class HackerRankSolutions {
     // Complete the superReducedString function below.
     static String superReducedString(String s) {
         StringBuilder reducedString = new StringBuilder(s);
-        for (int i=0 ; i<reducedString.length()-1 ; i++) {
-            if (reducedString.substring(i, i+1).equals(reducedString.substring(i+1, i+2))) {
-                reducedString = reducedString.delete(i, i+2);
+        for (int i = 0; i < reducedString.length() - 1; i++) {
+            if (reducedString.substring(i, i + 1).equals(reducedString.substring(i + 1, i + 2))) {
+                reducedString = reducedString.delete(i, i + 2);
                 reducedString = new StringBuilder(superReducedString(reducedString.toString()));
             }
         }
@@ -146,7 +146,7 @@ public class HackerRankSolutions {
     // Complete the findMedian function below.
     static int findMedian(int[] arr) {
         Arrays.sort(arr);
-        return arr[(arr.length-1)/2];
+        return arr[(arr.length - 1) / 2];
     }
 
     // Complete the closestNumbers function below.
@@ -155,20 +155,20 @@ public class HackerRankSolutions {
             return arr;
         }
         Arrays.sort(arr);
-        int smallestDiff = Math.abs(arr[0]-arr[1]);
-        for (int i=1 ; i<arr.length-1 ; i++) {
-            if (Math.abs(arr[i]-arr[i+1]) < smallestDiff ) {
-                smallestDiff = Math.abs(arr[i]-arr[i+1]);
+        int smallestDiff = Math.abs(arr[0] - arr[1]);
+        for (int i = 1; i < arr.length - 1; i++) {
+            if (Math.abs(arr[i] - arr[i + 1]) < smallestDiff) {
+                smallestDiff = Math.abs(arr[i] - arr[i + 1]);
             }
         }
         List<Integer> smallestDiffElems = new ArrayList<>();
-        for (int i=0 ; i<arr.length-1 ; i++) {
-            if (Math.abs(arr[i]-arr[i+1]) == smallestDiff ) {
+        for (int i = 0; i < arr.length - 1; i++) {
+            if (Math.abs(arr[i] - arr[i + 1]) == smallestDiff) {
                 smallestDiffElems.add(arr[i]);
-                smallestDiffElems.add(arr[i+1]);
+                smallestDiffElems.add(arr[i + 1]);
             }
         }
-        int[] array = smallestDiffElems.stream().mapToInt(i->i).toArray();
+        int[] array = smallestDiffElems.stream().mapToInt(i -> i).toArray();
         return array;
     }
 
@@ -178,9 +178,9 @@ public class HackerRankSolutions {
         if (returnYear > dueYear) {
             fine = 10000;
         } else if (returnYear == dueYear && returnMonth > dueMonth) {
-            fine = (returnMonth-dueMonth)*500;
+            fine = (returnMonth - dueMonth) * 500;
         } else if (returnYear == dueYear && returnMonth == dueMonth && returnDay > dueDay) {
-            fine = (returnDay-dueDay)*15;
+            fine = (returnDay - dueDay) * 15;
         }
         return fine;
     }
@@ -188,9 +188,9 @@ public class HackerRankSolutions {
     // Complete the squares function below.
     static int squares(int a, int b) {
         int counter = 0;
-        for (int i=1 ; i<=b ; i++) {
-            int square = i*i;
-            if (square >= a && square <=b) {
+        for (int i = 1; i <= b; i++) {
+            int square = i * i;
+            if (square >= a && square <= b) {
                 counter++;
             }
             if (square > b) {
@@ -207,7 +207,7 @@ public class HackerRankSolutions {
         while (actualNumberOfWrappers >= wrappersPromo) {
             int numberOfPromoChocolates = Math.floorDiv(actualNumberOfWrappers, wrappersPromo);
             numberOfChocolatesEaten += numberOfPromoChocolates;
-            actualNumberOfWrappers = actualNumberOfWrappers - numberOfPromoChocolates*wrappersPromo + numberOfPromoChocolates;
+            actualNumberOfWrappers = actualNumberOfWrappers - numberOfPromoChocolates * wrappersPromo + numberOfPromoChocolates;
         }
         return numberOfChocolatesEaten;
     }
@@ -233,12 +233,12 @@ public class HackerRankSolutions {
             if (!charOccurences.containsKey(c)) {
                 charOccurences.put(c, 1);
             } else {
-                charOccurences.replace(c, charOccurences.get(c)+1);
+                charOccurences.replace(c, charOccurences.get(c) + 1);
             }
         }
         int oddCharsNumber = 0;
         for (Character c : charOccurences.keySet()) {
-            if (charOccurences.get(c)%2 != 0) {
+            if (charOccurences.get(c) % 2 != 0) {
                 oddCharsNumber++;
             }
             if (oddCharsNumber > 1) {
@@ -266,14 +266,14 @@ public class HackerRankSolutions {
 
         int leftSum = 0;
         int rightSum = 0;
-        for (int i=1 ; i<arr.size() ; i++) {
+        for (int i = 1; i < arr.size(); i++) {
             rightSum += arr.get(i);
         }
         if (rightSum == 0) {
             return "YES";
         }
-        for (int middle=1 ; middle<arr.size() ; middle++) {
-            leftSum += arr.get(middle-1);
+        for (int middle = 1; middle < arr.size(); middle++) {
+            leftSum += arr.get(middle - 1);
             rightSum -= arr.get(middle);
             if (leftSum == rightSum) {
                 return "YES";
@@ -287,9 +287,9 @@ public class HackerRankSolutions {
 
     // Complete the alternatingCharacters function below.
     static int alternatingCharacters(String s) {
-        int counter=0;
-        for (int i=0 ; i<s.length()-1 ; i++) {
-            if (s.charAt(i) == s.charAt(i+1)) {
+        int counter = 0;
+        for (int i = 0; i < s.length() - 1; i++) {
+            if (s.charAt(i) == s.charAt(i + 1)) {
                 counter++;
             }
         }
@@ -299,14 +299,14 @@ public class HackerRankSolutions {
     // Complete the hourglassSum function below.
     static int hourglassSum(int[][] arr) {
         List<Integer> sums = new ArrayList<>();
-        for (int i=0 ; i<arr.length-2 ; i++) {
-            for (int j=0 ; j<arr.length-2 ; j++) {
-                Integer currentSum = arr[i][j] + arr[i][j+1] + arr[i][j+2] + arr[i+1][j+1] + arr[i+2][j] + arr[i+2][j+1] + arr[i+2][j+2];
+        for (int i = 0; i < arr.length - 2; i++) {
+            for (int j = 0; j < arr.length - 2; j++) {
+                Integer currentSum = arr[i][j] + arr[i][j + 1] + arr[i][j + 2] + arr[i + 1][j + 1] + arr[i + 2][j] + arr[i + 2][j + 1] + arr[i + 2][j + 2];
                 sums.add(currentSum);
             }
         }
         Integer maxSum = sums.get(0);
-        for (int i=1 ; i<sums.size() ; i++) {
+        for (int i = 1; i < sums.size(); i++) {
             if (sums.get(i) > maxSum) {
                 maxSum = sums.get(i);
             }
@@ -318,11 +318,11 @@ public class HackerRankSolutions {
     // Complete the rotLeft function below.
     static int[] rotLeft(int[] a, int d) {
         int[] rotatedArray = new int[a.length];
-        for (int i=0 ; i<a.length-d ; i++) {
-            rotatedArray[i] = a[i+d];
+        for (int i = 0; i < a.length - d; i++) {
+            rotatedArray[i] = a[i + d];
         }
-        for (int i=0 ; i<d ; i++) {
-            rotatedArray[a.length-d+i] = a[i];
+        for (int i = 0; i < d; i++) {
+            rotatedArray[a.length - d + i] = a[i];
         }
         return rotatedArray;
     }
@@ -343,10 +343,10 @@ public class HackerRankSolutions {
         }
         System.out.println("Array is sorted in " + counter + ".");
         System.out.println("First Element: " + a[0]);
-        System.out.println("Last Element: " + a[n-1]);
+        System.out.println("Last Element: " + a[n - 1]);
     }
 
-//    simple swap function
+    //    simple swap function
     static void swap(int[] arr, int i, int j) {
         int temp = arr[i];
         arr[i] = arr[j];
@@ -358,7 +358,7 @@ public class HackerRankSolutions {
         Arrays.sort(prices);
         int moneyLeft = k;
         int toysBought = 0;
-        for (int i=0 ; i<prices.length ; i++) {
+        for (int i = 0; i < prices.length; i++) {
             if (moneyLeft >= prices[i]) {
                 moneyLeft -= prices[i];
                 toysBought++;
@@ -373,10 +373,10 @@ public class HackerRankSolutions {
             return 0;
         }
         Arrays.sort(arr);
-        int minAbsDiff = Math.abs(arr[1]-arr[0]);
-        for (int i=1 ; i<arr.length-1 ; i++) {
-            if (Math.abs(arr[i]-arr[i+1]) < minAbsDiff) {
-                minAbsDiff = Math.abs(arr[i]-arr[i+1]);
+        int minAbsDiff = Math.abs(arr[1] - arr[0]);
+        for (int i = 1; i < arr.length - 1; i++) {
+            if (Math.abs(arr[i] - arr[i + 1]) < minAbsDiff) {
+                minAbsDiff = Math.abs(arr[i] - arr[i + 1]);
             }
         }
         return minAbsDiff;
@@ -386,8 +386,8 @@ public class HackerRankSolutions {
     static long marcsCakewalk(int[] calorie) {
         long milesTotal = 0;
         Arrays.sort(calorie);
-        for (int i=calorie.length-1 ; i>=0 ; i--) {
-            milesTotal += Math.pow(2, Math.abs(i+1-calorie.length)) * calorie[i];
+        for (int i = calorie.length - 1; i >= 0; i--) {
+            milesTotal += Math.pow(2, Math.abs(i + 1 - calorie.length)) * calorie[i];
         }
         return milesTotal;
     }
@@ -396,22 +396,22 @@ public class HackerRankSolutions {
     static int luckBalance(int k, int[][] contests) {
         int luckBalance = 0;
         int numberOfImportantContests = 0;
-        for (int i=0 ; i< contests.length ; i++) {
-            if (contests[i][1]==1) {
+        for (int i = 0; i < contests.length; i++) {
+            if (contests[i][1] == 1) {
                 numberOfImportantContests++;
             } else {
                 luckBalance += contests[i][0];
             }
         }
         int[] importantContests = new int[numberOfImportantContests];
-        for (int i=0, counter=0 ; i< contests.length ; i++) {
-            if (contests[i][1]==1) {
+        for (int i = 0, counter = 0; i < contests.length; i++) {
+            if (contests[i][1] == 1) {
                 importantContests[counter] = contests[i][0];
                 counter++;
             }
         }
         Arrays.sort(importantContests);
-        for (int actual_contest=importantContests.length-1, importantContestsLeft=k ; actual_contest>=0 ; actual_contest--) {
+        for (int actual_contest = importantContests.length - 1, importantContestsLeft = k; actual_contest >= 0; actual_contest--) {
             if (importantContestsLeft > 0) {
                 luckBalance += importantContests[actual_contest];
                 importantContestsLeft--;
@@ -447,20 +447,19 @@ public class HackerRankSolutions {
 
     // Complete the whatFlavors function below.
     static void whatFlavors(int[] cost, int money) {
-        Map<Integer,Integer> map = new HashMap<>();
-        map.put(money-cost[0],1);
-        for(int i=1; i<cost.length; i++) {
-            if(map.containsKey(cost[i])) {
-                System.out.println(map.get(cost[i])+" "+(i+1));
+        Map<Integer, Integer> map = new HashMap<>();
+        map.put(money - cost[0], 1);
+        for (int i = 1; i < cost.length; i++) {
+            if (map.containsKey(cost[i])) {
+                System.out.println(map.get(cost[i]) + " " + (i + 1));
                 break;
-            }
-            else if(!map.containsKey(cost[i])&&money-cost[i]>0) {
-                map.put(money-cost[i], i+1);
+            } else if (!map.containsKey(cost[i]) && money - cost[i] > 0) {
+                map.put(money - cost[i], i + 1);
             }
         }
     }
 
-// Detect a cycle in a linked list. Note that the head pointer may be 'null' if the list is empty.
+    // Detect a cycle in a linked list. Note that the head pointer may be 'null' if the list is empty.
     static boolean hasCycle(Node head) {
         if (head == null) {
             return false;
@@ -502,14 +501,32 @@ public class HackerRankSolutions {
         return output;
     }
 
+    // Complete the compareLists function below.
+    static boolean compareLists(SinglyLinkedListNode head1, SinglyLinkedListNode head2) {
+        while (head1 != null && head2 != null) {
+            if (head1.data != head2.data) {
+                return false;
+            }
+            head1 = head1.next;
+            head2 = head2.next;
+        }
+        return head1 == null && head2 == null;
+    }
+
 }
 
 class Node {
     int data;
     Node next;
 }
+
 class DoublyLinkedListNode {
-     int data;
-     DoublyLinkedListNode next;
-     DoublyLinkedListNode prev;
+    int data;
+    DoublyLinkedListNode next;
+    DoublyLinkedListNode prev;
+}
+
+class SinglyLinkedListNode {
+    int data;
+    SinglyLinkedListNode next;
 }
