@@ -513,6 +513,22 @@ public class HackerRankSolutions {
     return head1 == null && head2 == null;
   }
 
+  /*
+   * Complete the 'rotateLeft' function below.
+   *
+   * The function is expected to return an INTEGER_ARRAY.
+   * The function accepts following parameters:
+   *  1. INTEGER d
+   *  2. INTEGER_ARRAY arr
+   */
+
+  public static List<Integer> rotateLeft(int d, List<Integer> arr) {
+    List<Integer> rotatedArray = new ArrayList<>();
+    rotatedArray.addAll(arr.subList(d, arr.size()));
+    rotatedArray.addAll(arr.subList(0, d));
+    return rotatedArray;
+  }
+
   //    tree-huffman-decoding problem
   void decode(String s, TreeNode root) {
       StringBuilder decodedString = new StringBuilder();
