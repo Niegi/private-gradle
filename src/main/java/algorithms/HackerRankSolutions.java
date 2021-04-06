@@ -543,12 +543,83 @@ public class HackerRankSolutions {
       System.out.println(decodedString);
   }
 
+  // Complete the funnyString function below.
+  static String funnyString(String s) {
+    int[] ascii = new int[s.length()];
+    int[] reversed = new int[s.length()];
+    for (int i=0 ; i<s.length() ; i++) {
+      ascii[i] = s.charAt(i);
+      reversed[s.length()-i-1] = s.charAt(i);
+    }
+    int[] asciiDiffs = new int[ascii.length-1];
+    int[] reversedDiffs = new int[ascii.length-1];
+    for (int i=0 ; i<ascii.length-1 ; i++) {
+      asciiDiffs[i] = Math.abs(ascii[i]-ascii[i+1]);
+      reversedDiffs[i] = Math.abs(reversed[i]-reversed[i+1]);
+      if (asciiDiffs[i] != reversedDiffs[i]) {
+        return "Not Funny";
+      }
+    }
+    return "Funny";
+  }
+
+//  Lowest Common Ancestor problem
+  public static TreeNode lca(TreeNode root, int v1, int v2) {
+    if (root.data == v1 || root.data == v2) {
+      return root;
+    }
+    List<TreeNode> pathToV1 = new ArrayList<>();
+    List<TreeNode> pathToV2 = new ArrayList<>();
+    pathToV1.add(root);
+    pathToV2.add(root);
+    findPathToTreeNodeByItsData(Direction.LEFT, v1, pathToV1);
+    findPathToTreeNodeByItsData(Direction.LEFT, v2, pathToV2);
+
+    int longer = Math.max(pathToV1.size(), pathToV2.size());
+    for (int i=0 ; i<longer ; i++) {
+      TreeNode actual = pathToV1.get(i);
+      if (!pathToV1.get(i+1).equals(pathToV2.get(i+1))) {
+        return actual;
+      }
+    }
+
+    return new TreeNode();
+  }
+
+  private static void findPathToTreeNodeByItsData(Direction direction, int data, List<TreeNode> path) {
+    int lastIndex = path.size()-1;
+    if (direction == Direction.LEFT) {
+      TreeNode left = path.get(lastIndex).left;
+      if (left != null) {
+        path.add(left);
+        if (left.data != data) {
+          findPathToTreeNodeByItsData(Direction.LEFT, data, path);
+        }
+      } else {
+        findPathToTreeNodeByItsData(Direction.RIGHT, data, path);
+      }
+    } else {
+      TreeNode right = path.get(lastIndex).right;
+      if (right != null) {
+        path.add(right);
+        if (right.data != data) {
+          findPathToTreeNodeByItsData(Direction.LEFT, data, path);
+        }
+      } else {
+        path.remove(lastIndex);
+      }
+    }
+  }
+
+}
+
+enum Direction {
+  LEFT, RIGHT
 }
 
 class TreeNode {
     TreeNode left;
     TreeNode right;
-    int frequency;
     char data;
 }
 
