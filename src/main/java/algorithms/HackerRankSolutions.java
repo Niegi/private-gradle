@@ -611,6 +611,16 @@ public class HackerRankSolutions {
     }
   }
 
+  // Complete the saveThePrisoner function below.
+  static int saveThePrisoner(int n, int m, int s) {
+    int shift = m % n - 1;
+    if (shift == -1 && s==1) {
+      return n;
+    }
+    int fatalSeatNumber = s+shift <= n ? s+shift : (s+shift) % n;
+    return fatalSeatNumber;
+  }
+
 }
 
 enum Direction {
