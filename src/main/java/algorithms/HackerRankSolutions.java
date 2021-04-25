@@ -621,6 +621,32 @@ public class HackerRankSolutions {
     return fatalSeatNumber;
   }
 
+  /*
+   * Complete the 'fairRations' function below.
+   *
+   * The function is expected to return a STRING.
+   * The function accepts INTEGER_ARRAY B as parameter.
+   */
+
+  public static String fairRations(List<Integer> B) {
+    int[] arr = B.stream().mapToInt(i->i).toArray();
+    int loavesGiven = 0;
+    for (int i=0 ; i<arr.length-1 ; i++) {
+      if (!isEven(arr[i])) {
+        arr[i+1]++;
+        loavesGiven += 2;
+      }
+    }
+    if (isEven(arr[arr.length-1])) {
+      return String.valueOf(loavesGiven);
+    }
+    return "NO";
+  }
+
+  private static boolean isEven(int number) {
+    return number % 2 == 0;
+  }
+
 }
 
 enum Direction {
