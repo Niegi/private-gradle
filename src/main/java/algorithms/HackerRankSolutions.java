@@ -667,6 +667,61 @@ public class HackerRankSolutions {
         }
     }
 
+    /*
+     * Complete the 'surfaceArea' function below.
+     *
+     * The function is expected to return an INTEGER.
+     * The function accepts 2D_INTEGER_ARRAY A as parameter.
+     */
+
+    public static int surfaceArea(List<List<Integer>> A) {
+        int sum = 0;
+        sum += sumUpTopAndBottom(A);
+        sum += sumUpSideWalls(A);
+        sum += sumUpInnerWalls(A);
+
+        return sum;
+    }
+
+    private static int sumUpTopAndBottom(List<List<Integer>> A) {
+        int surfaceLength = A.size();
+        int surfaceWidth = A.get(0).size();
+        return 2*surfaceLength*surfaceWidth;
+    }
+
+    private static int sumUpSideWalls(List<List<Integer>> A) {
+        int sum = 0;
+        for (Integer i : A.get(0)) {
+            sum += i;
+        }
+        for (Integer i : A.get(A.size()-1)) {
+            sum += i;
+        }
+        for (List<Integer> row : A) {
+            sum = sum + row.get(0) + row.get(row.size()-1);
+        }
+        return sum;
+    }
+
+    private static int sumUpInnerWalls(List<List<Integer>> A) {
+        int sum = 0;
+        int surfaceLength = A.size();
+        int surfaceWidth = A.get(0).size();
+        for (int i=0 ; i<surfaceLength-1 ; i++) {
+            for (int j=0 ; j<surfaceWidth-1 ; j++) {
+                sum += Math.abs(A.get(i).get(j)-A.get(i).get(j+1));
+                sum += Math.abs(A.get(i).get(j)-A.get(i+1).get(j));
+            }
+        }
+        for (int i=0 ; i<A.size()-1 ; i++) {
+            sum += Math.abs(A.get(A.size()-1).get(i)-A.get(A.size()-1).get(i+1));
+        }
+        for (int i=0 ; i<A.get(0).size()-1 ; i++) {
+            sum += Math.abs(A.get(i).get(surfaceWidth-1)-A.get(i+1).get(surfaceWidth-1));
+        }
+        return sum;
+    }
+
     private static boolean isKaprekar(int n) {
         if (n == 1) {
             return true;
