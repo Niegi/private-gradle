@@ -13,6 +13,7 @@ public class HackerRankSolutions {
         String b = "jxwtrhvujlmrpdoqbisbwhmgpmeoke";
         System.out.println(makeAnagram(a, b));
         kaprekarNumbers(1, 99999);
+        System.out.println(surfaceArea(List.of(List.of(51, 32, 28, 49, 28, 21, 98, 56, 99, 77))));
     }
 
     //    Complete the hackerrankInString function in the editor below. It must return YES or NO.
@@ -713,11 +714,15 @@ public class HackerRankSolutions {
                 sum += Math.abs(A.get(i).get(j)-A.get(i+1).get(j));
             }
         }
-        for (int i=0 ; i<A.size()-1 ; i++) {
-            sum += Math.abs(A.get(A.size()-1).get(i)-A.get(A.size()-1).get(i+1));
+        if (surfaceWidth > 1) {
+            for (int i=0 ; i<A.size()-1 ; i++) {
+                sum += Math.abs(A.get(A.size()-1).get(i)-A.get(A.size()-1).get(i+1));
+            }
         }
-        for (int i=0 ; i<A.get(0).size()-1 ; i++) {
-            sum += Math.abs(A.get(i).get(surfaceWidth-1)-A.get(i+1).get(surfaceWidth-1));
+        if (surfaceLength > 1) {
+            for (int i=0 ; i<A.get(0).size()-1 ; i++) {
+                sum += Math.abs(A.get(i).get(surfaceWidth-1)-A.get(i+1).get(surfaceWidth-1));
+            }
         }
         return sum;
     }
