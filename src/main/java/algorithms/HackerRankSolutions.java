@@ -714,14 +714,24 @@ public class HackerRankSolutions {
                 sum += Math.abs(A.get(i).get(j)-A.get(i+1).get(j));
             }
         }
+
         if (surfaceWidth > 1) {
             for (int i=0 ; i<A.size()-1 ; i++) {
                 sum += Math.abs(A.get(A.size()-1).get(i)-A.get(A.size()-1).get(i+1));
             }
+        } else {
+            for (int i=0 ; i<surfaceLength-1 ; i++) {
+                sum += Math.abs(A.get(i).get(0)-A.get(i+1).get(0));
+            }
         }
+
         if (surfaceLength > 1) {
             for (int i=0 ; i<A.get(0).size()-1 ; i++) {
                 sum += Math.abs(A.get(i).get(surfaceWidth-1)-A.get(i+1).get(surfaceWidth-1));
+            }
+        } else {
+            for (int i=0 ; i<surfaceWidth-1 ; i++) {
+                sum += Math.abs(A.get(0).get(i)-A.get(0).get(i+1));
             }
         }
         return sum;
