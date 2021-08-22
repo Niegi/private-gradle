@@ -669,6 +669,30 @@ public class HackerRankSolutions {
     }
 
     /*
+     * Complete the 'stones' function below.
+     *
+     * The function is expected to return an INTEGER_ARRAY.
+     * The function accepts following parameters:
+     *  1. INTEGER n
+     *  2. INTEGER a
+     *  3. INTEGER b
+     */
+
+    public static List<Integer> stones(int n, int a, int b) {
+        if (n == 0) {
+            return Collections.singletonList(0);
+        }
+        Set<Integer> possibleStones = new LinkedHashSet<>();
+        int lowerValue = Math.min(a, b);
+        possibleStones.add((n-1)*lowerValue);
+        int difference = Math.abs(a-b);
+        for (int i=1 ; i<=n-1 ; i++) {
+            possibleStones.add((n-1)*lowerValue + i*difference);
+        }
+        return new ArrayList<>(possibleStones);
+    }
+
+    /*
      * Complete the 'surfaceArea' function below.
      *
      * The function is expected to return an INTEGER.

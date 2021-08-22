@@ -4,6 +4,9 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 
+import java.util.Arrays;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class HackerRankSolutionsTest {
@@ -151,7 +154,7 @@ class HackerRankSolutionsTest {
   }
 
   public static int[][] dataSetForSaveThePrisonerTest() {
-    return new int[][] { { 4 , 6, 2, 3 } };
+    return new int[][]{{4, 6, 2, 3}};
   }
 
   @ParameterizedTest
@@ -164,5 +167,29 @@ class HackerRankSolutionsTest {
 
     int finalPosition = HackerRankSolutions.saveThePrisoner(numberOfPrisoners, numberOfCandies, initialPosition);
     assertEquals(expectedFinalPosition, finalPosition);
+  }
+
+  @Test
+  void stonesTest() {
+    int numberOfStones = 58;
+    int a = 69;
+    int b = 24;
+
+    List actual = HackerRankSolutions.stones(numberOfStones, a, b);
+    List expected = Arrays.asList(1368, 1413, 1458, 1503, 1548, 1593, 1638, 1683, 1728, 1773, 1818, 1863, 1908, 1953,
+      1998, 2043, 2088, 2133, 2178, 2223, 2268, 2313, 2358, 2403, 2448, 2493, 2538, 2583, 2628, 2673, 2718, 2763, 2808,
+      2853, 2898, 2943, 2988, 3033, 3078, 3123, 3168, 3213, 3258, 3303, 3348, 3393, 3438, 3483, 3528, 3573, 3618, 3663,
+      3708, 3753, 3798, 3843, 3888, 3933);
+
+    assertEquals(expected, actual);
+
+    numberOfStones = 73;
+    a = 25;
+    b = 25;
+
+    actual = HackerRankSolutions.stones(numberOfStones, a, b);
+    expected = Arrays.asList(1800);
+
+    assertEquals(expected, actual);
   }
 }
