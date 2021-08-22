@@ -684,10 +684,11 @@ public class HackerRankSolutions {
         }
         Set<Integer> possibleStones = new LinkedHashSet<>();
         int lowerValue = Math.min(a, b);
-        possibleStones.add((n-1)*lowerValue);
+        int numberOfJumps = n-1;
+        possibleStones.add(numberOfJumps*lowerValue);
         int difference = Math.abs(a-b);
-        for (int i=1 ; i<=n-1 ; i++) {
-            possibleStones.add((n-1)*lowerValue + i*difference);
+        for (int i=1 ; i<=numberOfJumps ; i++) {
+            possibleStones.add(numberOfJumps*lowerValue + i*difference);
         }
         return new ArrayList<>(possibleStones);
     }
