@@ -720,6 +720,22 @@ public class HackerRankSolutions {
   }
 
   /*
+   * Complete the 'reversePrint' function below.
+   *
+   * The function accepts INTEGER_SINGLY_LINKED_LIST llist as parameter.
+   */
+
+  public static void reversePrint(SinglyLinkedListNode llist) {
+    List<Integer> reversed = new ArrayList<>();
+    while (llist != null) {
+      reversed.add(llist.data);
+      llist = llist.next;
+    }
+    Collections.reverse(reversed);
+    reversed.forEach(System.out::println);
+  }
+
+  /*
    * Complete the 'surfaceArea' function below.
    *
    * The function is expected to return an INTEGER.
