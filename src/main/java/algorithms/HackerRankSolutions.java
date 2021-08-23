@@ -761,6 +761,24 @@ public class HackerRankSolutions {
   }
 
   /*
+   * Complete the 'removeDuplicates' function below.
+   *
+   * The function is expected to return an INTEGER_SINGLY_LINKED_LIST.
+   * The function accepts INTEGER_SINGLY_LINKED_LIST llist as parameter.
+   */
+
+  public static SinglyLinkedListNode removeDuplicates(SinglyLinkedListNode llist) {
+    SinglyLinkedListNode head = llist;
+    while (llist != null && llist.next != null) {
+      if (llist.data == llist.next.data) {
+        llist.next = llist.next.next;
+      }
+      llist = llist.next;
+    }
+    return head;
+  }
+
+  /*
    * Complete the 'surfaceArea' function below.
    *
    * The function is expected to return an INTEGER.
