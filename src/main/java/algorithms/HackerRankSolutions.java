@@ -770,7 +770,7 @@ public class HackerRankSolutions {
   public static SinglyLinkedListNode removeDuplicates(SinglyLinkedListNode llist) {
     SinglyLinkedListNode head = llist;
     while (llist != null && llist.next != null) {
-      if (llist.data == llist.next.data) {
+      while (llist.next != null && llist.data == llist.next.data) {
         llist.next = llist.next.next;
       }
       llist = llist.next;
