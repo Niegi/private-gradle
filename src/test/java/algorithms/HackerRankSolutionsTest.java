@@ -2,6 +2,7 @@ package algorithms;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.Arrays;
@@ -189,6 +190,26 @@ class HackerRankSolutionsTest {
 
     actual = HackerRankSolutions.stones(numberOfStones, a, b);
     expected = Arrays.asList(1800);
+
+    assertEquals(expected, actual);
+  }
+
+  @ParameterizedTest
+  @CsvSource({
+    "1234, YES 1",
+    "91011, YES 9",
+    "99100, YES 99",
+    "101103, NO",
+    "010203, NO",
+    "13, NO",
+    "1, NO",
+    "00000000000000000000000000000000, NO",
+    "11111111111111111111111111111111, NO",
+    "10001001100210031004100510061007, YES 1000",
+  })
+  void separateNumbersTest(String input, String output) {
+    String actual = HackerRankSolutions.separateNumbers(input);
+    String expected = output;
 
     assertEquals(expected, actual);
   }
