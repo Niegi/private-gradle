@@ -735,6 +735,31 @@ public class HackerRankSolutions {
     reversed.forEach(System.out::println);
   }
 
+  // Complete the mergeLists function below.
+
+  static SinglyLinkedListNode mergeLists(SinglyLinkedListNode head1, SinglyLinkedListNode head2) {
+    List<Integer> mergeListTmp = new ArrayList<>();
+    while (head1 != null) {
+      mergeListTmp.add(head1.data);
+      head1 = head1.next;
+    }
+    while (head2 != null) {
+      mergeListTmp.add(head2.data);
+      head2 = head2.next;
+    }
+    Collections.sort(mergeListTmp);
+    SinglyLinkedListNode head = new SinglyLinkedListNode();
+    SinglyLinkedListNode currentHead = head;
+    for (int i=0 ; i<mergeListTmp.size()-1 ; i++) {
+      currentHead.data = mergeListTmp.get(i);
+      currentHead.next = new SinglyLinkedListNode();
+      currentHead = currentHead.next;
+    }
+    currentHead.data = mergeListTmp.get(mergeListTmp.size()-1);
+    currentHead.next = null;
+    return head;
+  }
+
   /*
    * Complete the 'surfaceArea' function below.
    *
