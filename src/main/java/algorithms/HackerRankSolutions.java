@@ -795,6 +795,10 @@ public class HackerRankSolutions {
     return false;
   }
 
+  /*
+   * Complete the 'preOrder' function below.
+   */
+
   public static void preOrder(TreeNode root) {
     System.out.print(root.data + " ");
     if (root.left != null) {
