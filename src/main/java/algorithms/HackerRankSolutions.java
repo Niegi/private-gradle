@@ -795,6 +795,16 @@ public class HackerRankSolutions {
     return false;
   }
 
+  public static void preOrder(TreeNode root) {
+    System.out.print(root.data + " ");
+    if (root.left != null) {
+      preOrder(root.left);
+    }
+    if (root.right != null) {
+      preOrder(root.right);
+    }
+  }
+
   /*
    * Complete the 'surfaceArea' function below.
    *
