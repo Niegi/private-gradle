@@ -778,6 +778,23 @@ public class HackerRankSolutions {
     return head;
   }
 
+  // Complete the hasCycle function below.
+
+  static boolean hasCycle(SinglyLinkedListNode head) {
+    if (head == null) {
+      return false;
+    }
+    Set<SinglyLinkedListNode> alreadyVisitedNodes = new HashSet<>();
+    alreadyVisitedNodes.add(head);
+    while (head.next != null) {
+      if (!alreadyVisitedNodes.add(head.next)) {
+        return true;
+      }
+      head = head.next;
+    }
+    return false;
+  }
+
   /*
    * Complete the 'surfaceArea' function below.
    *
