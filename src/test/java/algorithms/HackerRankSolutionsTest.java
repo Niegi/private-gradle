@@ -213,4 +213,15 @@ class HackerRankSolutionsTest {
 
     assertEquals(expected, actual);
   }
+
+  @ParameterizedTest
+  @CsvSource({
+    "hackerhappy, hackerrank, 9, Yes",
+    "aba, aba, 7, Yes",
+    "ashley, ash, 2, No"
+  })
+  void appendAndDelete(String initial, String expected, String numberOfOperations, String expectedResult) {
+    String actual = HackerRankSolutions.appendAndDelete(initial, expected, Integer.parseInt(numberOfOperations));
+    assertEquals(actual, expectedResult);
+  }
 }

@@ -810,6 +810,44 @@ public class HackerRankSolutions {
   }
 
   /*
+   * Complete the 'appendAndDelete' function below.
+   *
+   * The function is expected to return a STRING.
+   * The function accepts following parameters:
+   *  1. STRING s
+   *  2. STRING t
+   *  3. INTEGER k
+   */
+
+  public static String appendAndDelete(String initial, String expected, int numberOfOperationsAllowed) {
+    if (Math.abs(initial.length()-expected.length())>numberOfOperationsAllowed) {
+      return "No";
+    }
+    StringBuilder commonString = new StringBuilder();
+    for (int i=0 ; i<initial.length() && i<expected.length() ; i++) {
+      String actualCharInInitialString = initial.substring(i, i+1);
+      String actualCharInExpectedString = expected.substring(i, i+1);
+      if (actualCharInInitialString.equals(actualCharInExpectedString)) {
+        commonString.append(actualCharInInitialString);
+      } else {
+        break;
+      }
+    }
+    int numberOfOperationsLeft = numberOfOperationsAllowed - (initial.length()-commonString.length());
+    int commonExpectedLengthDiff = expected.length() - commonString.length();
+    if (numberOfOperationsLeft < commonExpectedLengthDiff) {
+      return "No";
+    } else if (numberOfOperationsLeft == commonExpectedLengthDiff) {
+      return "Yes";
+    } else if ((numberOfOperationsLeft-commonExpectedLengthDiff)%2 == 0) {
+      return "Yes";
+    } else if (commonString.length()*2 + commonExpectedLengthDiff < numberOfOperationsLeft) {
+      return "Yes";
+    }
+    return "No";
+  }
+
+  /*
    * Complete the 'surfaceArea' function below.
    *
    * The function is expected to return an INTEGER.
