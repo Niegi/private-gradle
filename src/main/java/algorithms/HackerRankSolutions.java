@@ -848,6 +848,22 @@ public class HackerRankSolutions {
   }
 
   /*
+   * Complete the 'flippingBits' function below.
+   *
+   * The function is expected to return a LONG_INTEGER.
+   * The function accepts LONG_INTEGER n as parameter.
+   */
+
+  public static long flippingBits(long input) {
+    StringBuilder binaryInputBuilder = new StringBuilder(Long.toBinaryString(input));
+    while (binaryInputBuilder.length() < 32) {
+      binaryInputBuilder.insert(0, 0);
+    }
+    String finalBinaryString = binaryInputBuilder.toString().replace("0", "2").replace("1", "0").replace("2", "1");
+    return Long.parseLong(finalBinaryString, 2);
+  }
+
+  /*
    * Complete the 'surfaceArea' function below.
    *
    * The function is expected to return an INTEGER.

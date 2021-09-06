@@ -224,4 +224,21 @@ class HackerRankSolutionsTest {
     String actual = HackerRankSolutions.appendAndDelete(initial, expected, Integer.parseInt(numberOfOperations));
     assertEquals(actual, expectedResult);
   }
+
+  public static long[][] dataSetForFlippingBitsTest() {
+    return new long[][]{
+      {4L, 4294967291L},
+      {123456L, 4294843839L},
+      {0L, 4294967295L},
+      {802743475L, 3492223820L},
+      {35601423L, 4259365872L}};
+  }
+
+  @ParameterizedTest
+  @MethodSource("dataSetForFlippingBitsTest")
+  void flippingBitsTest(long[] dataForTest) {
+    long actual = HackerRankSolutions.flippingBits(dataForTest[0]);
+    long expected = dataForTest[1];
+    assertEquals(expected, actual);
+  }
 }
