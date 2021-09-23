@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 public class HackerRankSolutions {
 
@@ -861,6 +862,33 @@ public class HackerRankSolutions {
     }
     String finalBinaryString = binaryInputBuilder.toString().replace("0", "2").replace("1", "0").replace("2", "1");
     return Long.parseLong(finalBinaryString, 2);
+  }
+
+  /*
+   * Complete the 'quickSort' function below.
+   *
+   * The function is expected to return an INTEGER_ARRAY.
+   * The function accepts INTEGER_ARRAY arr as parameter.
+   */
+
+  public static List<Integer> quickSortFirstPart(List<Integer> arr) {
+    if (arr == null || arr.size() <= 1) {
+      return arr;
+    }
+    int pivot = arr.get(0);
+    List<Integer> left = new ArrayList<>();
+    List<Integer> equal = new ArrayList<>();
+    List<Integer> right = new ArrayList<>();
+    arr.forEach(e -> {
+      if (e < pivot) {
+        left.add(e);
+      } else if (e == pivot) {
+        equal.add(e);
+      } else {
+        right.add(e);
+      }
+    });
+    return Stream.of(left, equal, right).flatMap(Collection::stream).collect(Collectors.toList());
   }
 
   /*
