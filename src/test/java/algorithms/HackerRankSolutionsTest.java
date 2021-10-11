@@ -249,4 +249,12 @@ class HackerRankSolutionsTest {
     List<Integer> actual = HackerRankSolutions.quickSortFirstPart(input);
     assertEquals(expected, actual);
   }
+
+  @Test
+  void acmTeamTest() {
+    List<String> input = List.of("11101", "10101", "11001", "10111", "10000", "01110");
+    List<Integer> expected = List.of(5, 6);
+    List<Integer> actual = HackerRankSolutions.acmTeam(input);
+    assertEquals(expected, actual);
+  }
 }

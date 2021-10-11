@@ -892,6 +892,61 @@ public class HackerRankSolutions {
   }
 
   /*
+   * Complete the 'acmTeam' function below.
+   *
+   * The function is expected to return an INTEGER_ARRAY.
+   * The function accepts STRING_ARRAY topic as parameter.
+   */
+
+  public static List<Integer> acmTeam(List<String> peopleKnowledge) {
+    List<String> allPossibleTeamsKnowledge = new ArrayList<>();
+    for (int i=0 ; i<peopleKnowledge.size()-1 ; i++) {
+      for (int j=i+1 ; j<peopleKnowledge.size() ; j++) {
+        String summarizedTeamKnowledge = getSummarizedTeamKnowledge(peopleKnowledge.get(i), peopleKnowledge.get(j));
+        allPossibleTeamsKnowledge.add(summarizedTeamKnowledge);
+      }
+    }
+    List<Integer> allPossibleTeamsKnowledgeCounted = allPossibleTeamsKnowledge.stream()
+      .map(str -> countKnownTopics(str))
+      .collect(Collectors.toList());
+
+    int maxTopicsKnown = 0;
+    int numberOfTeamsWithBestKnowledge = 0;
+    for (Integer teamSumKnowledge : allPossibleTeamsKnowledgeCounted) {
+      if (teamSumKnowledge > maxTopicsKnown) {
+        maxTopicsKnown = teamSumKnowledge;
+        numberOfTeamsWithBestKnowledge = 1;
+      } else if (teamSumKnowledge == maxTopicsKnown) {
+        numberOfTeamsWithBestKnowledge++;
+      }
+    }
+    return List.of(maxTopicsKnown, numberOfTeamsWithBestKnowledge);
+  }
+
+  private static String getSummarizedTeamKnowledge(String member1, String member2) {
+    StringBuilder summarizedTeamKnowledge = new StringBuilder();
+    for (int i=0 ; i<member1.length() ; i++) {
+      if (member1.charAt(i) == '1' || member2.charAt(i) == '1') {
+        summarizedTeamKnowledge.append("1");
+      } else {
+        summarizedTeamKnowledge.append("0");
+      }
+    }
+    return summarizedTeamKnowledge.toString();
+  }
+
+  private static Integer countKnownTopics(String teamKnowledge) {
+    Integer counter = 0;
+    for (int i=0 ; i<teamKnowledge.length() ; i++) {
+      Integer currentTopic = Integer.valueOf(teamKnowledge.substring(i, i+1));
+      if (currentTopic == 1) {
+        counter++;
+      }
+    }
+    return counter;
+  }
+
+  /*
    * Complete the 'surfaceArea' function below.
    *
    * The function is expected to return an INTEGER.
