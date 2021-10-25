@@ -220,7 +220,7 @@ class HackerRankSolutionsTest {
     "aba, aba, 7, Yes",
     "ashley, ash, 2, No"
   })
-  void appendAndDelete(String initial, String expected, String numberOfOperations, String expectedResult) {
+  void appendAndDeleteTest(String initial, String expected, String numberOfOperations, String expectedResult) {
     String actual = HackerRankSolutions.appendAndDelete(initial, expected, Integer.parseInt(numberOfOperations));
     assertEquals(actual, expectedResult);
   }
@@ -256,5 +256,17 @@ class HackerRankSolutionsTest {
     List<Integer> expected = List.of(5, 6);
     List<Integer> actual = HackerRankSolutions.acmTeam(input);
     assertEquals(expected, actual);
+  }
+
+  @ParameterizedTest
+  @CsvSource({
+    "abc, 2",
+    "abcba, 0",
+    "abcd, 4",
+    "cba, 2"
+  })
+  void theLoveLetterMysteryTest(String initial, int expected) {
+    int actual = HackerRankSolutions.theLoveLetterMystery(initial);
+    assertEquals(actual, expected);
   }
 }

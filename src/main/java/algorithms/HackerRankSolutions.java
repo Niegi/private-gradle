@@ -892,6 +892,24 @@ public class HackerRankSolutions {
   }
 
   /*
+   * Complete the 'theLoveLetterMystery' function below.
+   *
+   * The function is expected to return an INTEGER.
+   * The function accepts STRING s as parameter.
+   */
+
+  public static int theLoveLetterMystery(String s) {
+    int counter = 0;
+    for (int i=0 ; i<s.length()/2 ; i++) {
+      char c1 = s.charAt(i);
+      char c2 = s.charAt(s.length()-1-i);
+      int diff = Math.abs(c2-c1);
+      counter += diff;
+    }
+    return counter;
+  }
+
+  /*
    * Complete the 'acmTeam' function below.
    *
    * The function is expected to return an INTEGER_ARRAY.
