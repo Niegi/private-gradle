@@ -892,6 +892,31 @@ public class HackerRankSolutions {
   }
 
   /*
+   * Complete the 'toys' function below.
+   *
+   * The function is expected to return an INTEGER.
+   * The function accepts INTEGER_ARRAY w as parameter.
+   */
+
+  public static int toys(List<Integer> w) {
+    if (w.isEmpty()) {
+      return 0;
+    }
+    List<Integer> sorted = w.stream().sorted().collect(Collectors.toList());
+    int containersNumber = 1;
+    int actualLowest = sorted.get(0);
+    for (int i=1 ; i<sorted.size() ; i++) {
+      if (sorted.get(i) <= actualLowest+4) {
+        continue;
+      } else {
+        actualLowest = sorted.get(i);
+        containersNumber++;
+      }
+    }
+    return containersNumber;
+  }
+
+  /*
    * Complete the 'theLoveLetterMystery' function below.
    *
    * The function is expected to return an INTEGER.

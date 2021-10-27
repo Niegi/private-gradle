@@ -269,4 +269,12 @@ class HackerRankSolutionsTest {
     int actual = HackerRankSolutions.theLoveLetterMystery(initial);
     assertEquals(actual, expected);
   }
+
+  @Test
+  void toysTest() {
+    List<Integer> input = List.of(1, 2, 3, 21, 7, 12, 14, 21);
+    int actual = HackerRankSolutions.toys(input);
+    int expected = 4;
+    assertEquals(actual, expected);
+  }
 }
