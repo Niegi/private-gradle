@@ -990,6 +990,20 @@ public class HackerRankSolutions {
   }
 
   /*
+   * Complete the 'inOrder' function below.
+   */
+
+  public static void inOrder(IntTreeNode root) {
+    if (root.left != null) {
+      inOrder(root.left);
+    }
+    System.out.print(root.data + " ");
+    if (root.right != null) {
+      inOrder(root.right);
+    }
+  }
+
+  /*
    * Complete the 'surfaceArea' function below.
    *
    * The function is expected to return an INTEGER.
@@ -1101,6 +1115,12 @@ class TreeNode {
   TreeNode left;
   TreeNode right;
   char data;
+}
+
+class IntTreeNode {
+  IntTreeNode left;
+  IntTreeNode right;
+  int data;
 }
 
 class Node {
