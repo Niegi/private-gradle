@@ -277,4 +277,15 @@ class HackerRankSolutionsTest {
     int expected = 4;
     assertEquals(actual, expected);
   }
+
+  @Test
+  void icecreamParlorTest() {
+    List<Integer> input = List.of(1, 4, 5, 3, 2);
+    int moneyToSpend = 4;
+
+    List<Integer> expected = List.of(1, 4);
+    List<Integer> actual = HackerRankSolutions.icecreamParlor(moneyToSpend, input);
+
+    assertEquals(expected, actual);
+  }
 }
