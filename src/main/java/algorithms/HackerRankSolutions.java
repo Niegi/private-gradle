@@ -1044,8 +1044,41 @@ public class HackerRankSolutions {
    */
 
   public static int sherlockAndAnagrams(String s) {
+    int currentSubstringLength = 1;
+    int numberOfAnagrams = 0;
+    for (int i=0 ; i<s.length()-1 ; i++) {
+      for (int k=0 ; k<s.length()-currentSubstringLength ; k++) {
+        String currentSubstring = s.substring(k, k+currentSubstringLength);
+        String restOfString = s.substring(k+1);
+        numberOfAnagrams += containsAnagram(currentSubstring, restOfString);
+      }
+      currentSubstringLength++;
+    }
+    return numberOfAnagrams;
+  }
 
-    return 0;
+  private static int containsAnagram(String input, String possibleAnagrams) {
+    int numberOfPossibleAnagrams = possibleAnagrams.length() - input.length()+1;
+    int numberOfAnagrams = 0;
+    List<Character> inputAsChars = input.chars()
+      .mapToObj(e -> (char) e)
+      .collect(Collectors.toList());
+    for (int i=0 ; i<numberOfPossibleAnagrams ; i++) {
+      boolean isAnagram = true;
+      List<Character> anagramAsChars = possibleAnagrams.substring(i, i+input.length()).chars()
+        .mapToObj(e -> (char) e)
+        .collect(Collectors.toList());
+      for (Character c : inputAsChars) {
+        if (!anagramAsChars.remove(c)) {
+          isAnagram= false;
+          break;
+        }
+      }
+      if (isAnagram) {
+        numberOfAnagrams++;
+      }
+    }
+    return numberOfAnagrams;
   }
 
   /*
