@@ -288,4 +288,16 @@ class HackerRankSolutionsTest {
 
     assertEquals(expected, actual);
   }
+
+  @ParameterizedTest
+  @CsvSource({
+    "abba, 4",
+    "abcd, 0",
+    "ifailuhkqq, 3",
+    "kkkk, 10"
+  })
+  void sherlockAndAnagrams(String s, int expected) {
+    int actual = HackerRankSolutions.sherlockAndAnagrams(s);
+    assertEquals(expected, actual);
+  }
 }

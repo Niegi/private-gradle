@@ -1037,6 +1037,18 @@ public class HackerRankSolutions {
   }
 
   /*
+   * Complete the 'sherlockAndAnagrams' function below.
+   *
+   * The function is expected to return an INTEGER.
+   * The function accepts STRING s as parameter.
+   */
+
+  public static int sherlockAndAnagrams(String s) {
+
+    return 0;
+  }
+
+  /*
    * Complete the 'surfaceArea' function below.
    *
    * The function is expected to return an INTEGER.
