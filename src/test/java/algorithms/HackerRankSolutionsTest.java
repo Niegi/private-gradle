@@ -300,4 +300,16 @@ class HackerRankSolutionsTest {
     int actual = HackerRankSolutions.sherlockAndAnagrams(s);
     assertEquals(expected, actual);
   }
+
+  @ParameterizedTest
+  @CsvSource({
+    "abc, YES",
+    "aabbcd, NO",
+    "aabbccddeefghi, NO",
+    "abcdefghhgfedecba, YES"
+  })
+  void isValid(String input, String expected) {
+    String actual = HackerRankSolutions.isValid(input);
+    assertEquals(expected, actual);
+  }
 }

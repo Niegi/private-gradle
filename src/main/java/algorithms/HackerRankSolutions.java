@@ -1,6 +1,8 @@
 package algorithms;
 
 
+import vending.SoldOutException;
+
 import java.io.IOException;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -1079,6 +1081,41 @@ public class HackerRankSolutions {
       }
     }
     return numberOfAnagrams;
+  }
+
+  /*
+   * Complete the 'isValid' function below.
+   *
+   * The function is expected to return a STRING.
+   * The function accepts STRING s as parameter.
+   */
+
+  public static String isValid(String s) {
+    if (checkIfAllCharsInStringOccurTheSameNumberOfTimes(s)) {
+      return "YES";
+    }
+    for (int i=0 ; i<s.length() ; i++) {
+      String concat = s.substring(0, i) + s.substring(i+1);
+      if (checkIfAllCharsInStringOccurTheSameNumberOfTimes(concat)) {
+        return "YES";
+      }
+    }
+    return "NO";
+  }
+
+  private static boolean checkIfAllCharsInStringOccurTheSameNumberOfTimes(String s) {
+    Map<Character, Integer> charsOccurrencesTimes= new HashMap<>();
+    for (char c : s.toCharArray()) {
+      if (charsOccurrencesTimes.containsKey(c)) {
+        int actual = charsOccurrencesTimes.get(c);
+        actual++;
+        charsOccurrencesTimes.put(c, actual);
+      } else {
+        charsOccurrencesTimes.put(c, 1);
+      }
+    }
+    Set<Integer> collect = new HashSet<>(charsOccurrencesTimes.values());
+    return collect.size() <= 1;
   }
 
   /*
