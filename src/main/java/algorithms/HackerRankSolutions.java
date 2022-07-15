@@ -1118,6 +1118,15 @@ public class HackerRankSolutions {
     return collect.size() <= 1;
   }
 
+  public static int getNode(SinglyLinkedListNode llist, int positionFromTail) {
+    List<Integer> tmp = new ArrayList<>();
+    while ((llist != null)) {
+      tmp.add(llist.data);
+      llist = llist.next;
+    }
+    return tmp.get(tmp.size() - positionFromTail - 1);
+  }
+
   /*
    * Complete the 'surfaceArea' function below.
    *
