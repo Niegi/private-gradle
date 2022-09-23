@@ -1127,6 +1127,18 @@ public class HackerRankSolutions {
     return tmp.get(tmp.size() - positionFromTail - 1);
   }
 
+  public static SinglyLinkedListNode reverse(SinglyLinkedListNode llist) {
+    SinglyLinkedListNode current = llist.next;
+    llist.next = null;
+    while (current != null) {
+      SinglyLinkedListNode tmp = llist;
+      llist = current;
+      llist.next = tmp;
+      current = current.next;
+    }
+    return llist;
+  }
+
   /*
    * Complete the 'surfaceArea' function below.
    *
