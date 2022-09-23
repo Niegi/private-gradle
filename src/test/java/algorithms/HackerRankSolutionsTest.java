@@ -312,4 +312,13 @@ class HackerRankSolutionsTest {
     String actual = HackerRankSolutions.isValid(input);
     assertEquals(expected, actual);
   }
+
+  @Test
+  void getTotalXTest() {
+    List<Integer> a = List.of(2, 6);
+    List<Integer> b = List.of(24, 36);
+    int expected = 2;
+    int actual = HackerRankSolutions.getTotalX(a, b);
+    assertEquals(expected, actual);
+  }
 }

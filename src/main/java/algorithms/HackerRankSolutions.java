@@ -1,8 +1,6 @@
 package algorithms;
 
 
-import vending.SoldOutException;
-
 import java.io.IOException;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -704,7 +702,7 @@ public class HackerRankSolutions {
 
   public static String separateNumbers(String s) {
 
-    for (int i=1 ; i<=s.length()/2 ; i++) {
+    for (int i = 1; i <= s.length() / 2; i++) {
       long firstNumber = Long.parseLong(s.substring(0, i));
       long current = firstNumber;
       StringBuilder builder = new StringBuilder(String.valueOf(current));
@@ -753,12 +751,12 @@ public class HackerRankSolutions {
     Collections.sort(mergeListTmp);
     SinglyLinkedListNode head = new SinglyLinkedListNode();
     SinglyLinkedListNode currentHead = head;
-    for (int i=0 ; i<mergeListTmp.size()-1 ; i++) {
+    for (int i = 0; i < mergeListTmp.size() - 1; i++) {
       currentHead.data = mergeListTmp.get(i);
       currentHead.next = new SinglyLinkedListNode();
       currentHead = currentHead.next;
     }
-    currentHead.data = mergeListTmp.get(mergeListTmp.size()-1);
+    currentHead.data = mergeListTmp.get(mergeListTmp.size() - 1);
     currentHead.next = null;
     return head;
   }
@@ -823,28 +821,28 @@ public class HackerRankSolutions {
    */
 
   public static String appendAndDelete(String initial, String expected, int numberOfOperationsAllowed) {
-    if (Math.abs(initial.length()-expected.length())>numberOfOperationsAllowed) {
+    if (Math.abs(initial.length() - expected.length()) > numberOfOperationsAllowed) {
       return "No";
     }
     StringBuilder commonString = new StringBuilder();
-    for (int i=0 ; i<initial.length() && i<expected.length() ; i++) {
-      String actualCharInInitialString = initial.substring(i, i+1);
-      String actualCharInExpectedString = expected.substring(i, i+1);
+    for (int i = 0; i < initial.length() && i < expected.length(); i++) {
+      String actualCharInInitialString = initial.substring(i, i + 1);
+      String actualCharInExpectedString = expected.substring(i, i + 1);
       if (actualCharInInitialString.equals(actualCharInExpectedString)) {
         commonString.append(actualCharInInitialString);
       } else {
         break;
       }
     }
-    int numberOfOperationsLeft = numberOfOperationsAllowed - (initial.length()-commonString.length());
+    int numberOfOperationsLeft = numberOfOperationsAllowed - (initial.length() - commonString.length());
     int commonExpectedLengthDiff = expected.length() - commonString.length();
     if (numberOfOperationsLeft < commonExpectedLengthDiff) {
       return "No";
     } else if (numberOfOperationsLeft == commonExpectedLengthDiff) {
       return "Yes";
-    } else if ((numberOfOperationsLeft-commonExpectedLengthDiff)%2 == 0) {
+    } else if ((numberOfOperationsLeft - commonExpectedLengthDiff) % 2 == 0) {
       return "Yes";
-    } else if (commonString.length()*2 + commonExpectedLengthDiff < numberOfOperationsLeft) {
+    } else if (commonString.length() * 2 + commonExpectedLengthDiff < numberOfOperationsLeft) {
       return "Yes";
     }
     return "No";
@@ -907,8 +905,8 @@ public class HackerRankSolutions {
     List<Integer> sorted = w.stream().sorted().collect(Collectors.toList());
     int containersNumber = 1;
     int actualLowest = sorted.get(0);
-    for (int i=1 ; i<sorted.size() ; i++) {
-      if (sorted.get(i) <= actualLowest+4) {
+    for (int i = 1; i < sorted.size(); i++) {
+      if (sorted.get(i) <= actualLowest + 4) {
         continue;
       } else {
         actualLowest = sorted.get(i);
@@ -927,10 +925,10 @@ public class HackerRankSolutions {
 
   public static int theLoveLetterMystery(String s) {
     int counter = 0;
-    for (int i=0 ; i<s.length()/2 ; i++) {
+    for (int i = 0; i < s.length() / 2; i++) {
       char c1 = s.charAt(i);
-      char c2 = s.charAt(s.length()-1-i);
-      int diff = Math.abs(c2-c1);
+      char c2 = s.charAt(s.length() - 1 - i);
+      int diff = Math.abs(c2 - c1);
       counter += diff;
     }
     return counter;
@@ -945,8 +943,8 @@ public class HackerRankSolutions {
 
   public static List<Integer> acmTeam(List<String> peopleKnowledge) {
     List<String> allPossibleTeamsKnowledge = new ArrayList<>();
-    for (int i=0 ; i<peopleKnowledge.size()-1 ; i++) {
-      for (int j=i+1 ; j<peopleKnowledge.size() ; j++) {
+    for (int i = 0; i < peopleKnowledge.size() - 1; i++) {
+      for (int j = i + 1; j < peopleKnowledge.size(); j++) {
         String summarizedTeamKnowledge = getSummarizedTeamKnowledge(peopleKnowledge.get(i), peopleKnowledge.get(j));
         allPossibleTeamsKnowledge.add(summarizedTeamKnowledge);
       }
@@ -970,7 +968,7 @@ public class HackerRankSolutions {
 
   private static String getSummarizedTeamKnowledge(String member1, String member2) {
     StringBuilder summarizedTeamKnowledge = new StringBuilder();
-    for (int i=0 ; i<member1.length() ; i++) {
+    for (int i = 0; i < member1.length(); i++) {
       if (member1.charAt(i) == '1' || member2.charAt(i) == '1') {
         summarizedTeamKnowledge.append("1");
       } else {
@@ -982,8 +980,8 @@ public class HackerRankSolutions {
 
   private static Integer countKnownTopics(String teamKnowledge) {
     Integer counter = 0;
-    for (int i=0 ; i<teamKnowledge.length() ; i++) {
-      Integer currentTopic = Integer.valueOf(teamKnowledge.substring(i, i+1));
+    for (int i = 0; i < teamKnowledge.length(); i++) {
+      Integer currentTopic = Integer.valueOf(teamKnowledge.substring(i, i + 1));
       if (currentTopic == 1) {
         counter++;
       }
@@ -1028,10 +1026,10 @@ public class HackerRankSolutions {
    */
 
   public static List<Integer> icecreamParlor(int m, List<Integer> arr) {
-    for (int i=0 ; i<arr.size()-1 ; i++) {
-      for (int j=i+1 ; j<arr.size() ; j++) {
+    for (int i = 0; i < arr.size() - 1; i++) {
+      for (int j = i + 1; j < arr.size(); j++) {
         if (arr.get(i) + arr.get(j) == m) {
-          return List.of(i+1, j+1);
+          return List.of(i + 1, j + 1);
         }
       }
     }
@@ -1048,10 +1046,10 @@ public class HackerRankSolutions {
   public static int sherlockAndAnagrams(String s) {
     int currentSubstringLength = 1;
     int numberOfAnagrams = 0;
-    for (int i=0 ; i<s.length()-1 ; i++) {
-      for (int k=0 ; k<s.length()-currentSubstringLength ; k++) {
-        String currentSubstring = s.substring(k, k+currentSubstringLength);
-        String restOfString = s.substring(k+1);
+    for (int i = 0; i < s.length() - 1; i++) {
+      for (int k = 0; k < s.length() - currentSubstringLength; k++) {
+        String currentSubstring = s.substring(k, k + currentSubstringLength);
+        String restOfString = s.substring(k + 1);
         numberOfAnagrams += containsAnagram(currentSubstring, restOfString);
       }
       currentSubstringLength++;
@@ -1060,19 +1058,19 @@ public class HackerRankSolutions {
   }
 
   private static int containsAnagram(String input, String possibleAnagrams) {
-    int numberOfPossibleAnagrams = possibleAnagrams.length() - input.length()+1;
+    int numberOfPossibleAnagrams = possibleAnagrams.length() - input.length() + 1;
     int numberOfAnagrams = 0;
     List<Character> inputAsChars = input.chars()
       .mapToObj(e -> (char) e)
       .collect(Collectors.toList());
-    for (int i=0 ; i<numberOfPossibleAnagrams ; i++) {
+    for (int i = 0; i < numberOfPossibleAnagrams; i++) {
       boolean isAnagram = true;
-      List<Character> anagramAsChars = possibleAnagrams.substring(i, i+input.length()).chars()
+      List<Character> anagramAsChars = possibleAnagrams.substring(i, i + input.length()).chars()
         .mapToObj(e -> (char) e)
         .collect(Collectors.toList());
       for (Character c : inputAsChars) {
         if (!anagramAsChars.remove(c)) {
-          isAnagram= false;
+          isAnagram = false;
           break;
         }
       }
@@ -1094,8 +1092,8 @@ public class HackerRankSolutions {
     if (checkIfAllCharsInStringOccurTheSameNumberOfTimes(s)) {
       return "YES";
     }
-    for (int i=0 ; i<s.length() ; i++) {
-      String concat = s.substring(0, i) + s.substring(i+1);
+    for (int i = 0; i < s.length(); i++) {
+      String concat = s.substring(0, i) + s.substring(i + 1);
       if (checkIfAllCharsInStringOccurTheSameNumberOfTimes(concat)) {
         return "YES";
       }
@@ -1104,7 +1102,7 @@ public class HackerRankSolutions {
   }
 
   private static boolean checkIfAllCharsInStringOccurTheSameNumberOfTimes(String s) {
-    Map<Character, Integer> charsOccurrencesTimes= new HashMap<>();
+    Map<Character, Integer> charsOccurrencesTimes = new HashMap<>();
     for (char c : s.toCharArray()) {
       if (charsOccurrencesTimes.containsKey(c)) {
         int actual = charsOccurrencesTimes.get(c);
@@ -1137,6 +1135,44 @@ public class HackerRankSolutions {
       current = current.next;
     }
     return llist;
+  }
+
+  /*
+   * Complete the 'getTotalX' function below.
+   *
+   * The function is expected to return an INTEGER.
+   * The function accepts following parameters:
+   *  1. INTEGER_ARRAY a
+   *  2. INTEGER_ARRAY b
+   */
+
+  public static int getTotalX(List<Integer> a, List<Integer> b) {
+    List<Integer> sortedA = new ArrayList<>(a);
+    Collections.sort(sortedA);
+    List<Integer> sortedB = new ArrayList<>(b);
+    Collections.sort(sortedB);
+    Set<Integer> candidates =
+      IntStream.rangeClosed(sortedA.get(sortedA.size()-1), sortedB.get(0))
+        .boxed()
+        .collect(Collectors.toSet());
+    return (int) candidates.stream()
+      .filter(candidate -> {
+        for (Integer i : sortedA) {
+          if (candidate % i != 0) {
+            return false;
+          }
+        }
+        return true;
+      })
+      .filter(candidate -> {
+        for (Integer i : sortedB) {
+          if (i % candidate != 0) {
+            return false;
+          }
+        }
+        return true;
+      })
+      .count();
   }
 
   /*
