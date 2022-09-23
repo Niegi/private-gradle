@@ -1151,11 +1151,7 @@ public class HackerRankSolutions {
     Collections.sort(sortedA);
     List<Integer> sortedB = new ArrayList<>(b);
     Collections.sort(sortedB);
-    Set<Integer> candidates =
-      IntStream.rangeClosed(sortedA.get(sortedA.size()-1), sortedB.get(0))
-        .boxed()
-        .collect(Collectors.toSet());
-    return (int) candidates.stream()
+    return (int) IntStream.rangeClosed(sortedA.get(sortedA.size()-1), sortedB.get(0))
       .filter(candidate -> {
         for (Integer i : sortedA) {
           if (candidate % i != 0) {
