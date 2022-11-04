@@ -1178,7 +1178,7 @@ public class HackerRankSolutions {
    * The function accepts STRING s as parameter.
    */
 
-  public static int stringConstruction(String s) {
+  public static int stringConstructionNotOptimised(String s) {
     int actualCost = 0;
     StringBuilder oldString = new StringBuilder(s);
     StringBuilder newString = new StringBuilder();
@@ -1200,6 +1200,15 @@ public class HackerRankSolutions {
       }
     }
     return actualCost;
+  }
+
+  public static int stringConstruction(String s) {
+    char[] chars = s.toCharArray();
+    Set<Character> uniqueChars = new HashSet<>();
+    for (char c : chars) {
+      uniqueChars.add(c);
+    }
+    return uniqueChars.size();
   }
 
   /*
