@@ -1237,6 +1237,28 @@ public class HackerRankSolutions {
   }
 
   /*
+   * Complete the 'beautifulBinaryString' function below.
+   *
+   * The function is expected to return an INTEGER.
+   * The function accepts STRING b as parameter.
+   */
+
+  public static int beautifulBinaryString(String b) {
+    if (b.length() < 3 ) {
+      return 0;
+    }
+    int changesNumber = 0;
+    StringBuilder builder = new StringBuilder(b);
+    for (int i=2 ; i<b.length() ; i++) {
+      if (builder.substring(i-2, i+1).equals("010")) {
+        builder.replace(i, i+1, "1");
+        changesNumber++;
+      }
+    }
+    return changesNumber;
+  }
+
+  /*
    * Complete the 'surfaceArea' function below.
    *
    * The function is expected to return an INTEGER.

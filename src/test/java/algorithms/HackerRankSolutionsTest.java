@@ -443,4 +443,15 @@ class HackerRankSolutionsTest {
     int expected = 5; // as 'cd' are common chars
     assertEquals(expected, actual);
   }
+
+  @ParameterizedTest
+  @CsvSource({
+    "010, 1",
+    "0101010, 2"
+  })
+  void beautifulBinaryStringTest(String input, String expected) {
+    int actual = HackerRankSolutions.beautifulBinaryString(input);
+    int expectedInt = Integer.parseInt(expected);
+    assertEquals(expectedInt, actual);
+  }
 }
