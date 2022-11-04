@@ -1220,7 +1220,7 @@ public class HackerRankSolutions {
 
   public static int gemstones(List<String> arr) {
     char[] chars = arr.get(0).toCharArray();
-    int gemstonesNumber = 0;
+    Set<Character> uniqueGemstones = new HashSet<>();
     for (char c : chars) {
       boolean contains = true;
       for (String s : arr) {
@@ -1230,10 +1230,10 @@ public class HackerRankSolutions {
         }
       }
       if (contains) {
-        gemstonesNumber++;
+        uniqueGemstones.add(c);
       }
     }
-    return gemstonesNumber;
+    return uniqueGemstones.size();
   }
 
   /*
