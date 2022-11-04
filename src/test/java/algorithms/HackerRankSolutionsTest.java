@@ -321,4 +321,16 @@ class HackerRankSolutionsTest {
     int actual = HackerRankSolutions.getTotalX(a, b);
     assertEquals(expected, actual);
   }
+
+  @ParameterizedTest
+  @CsvSource({
+    "abcd, 4",
+    "abab, 2",
+    "bccb, 2"
+  })
+  void stringConstructionTest(String input, String expected) {
+    int actual = HackerRankSolutions.stringConstruction(input);
+    int expectedInt = Integer.parseInt(expected);
+    assertEquals(expectedInt, actual);
+  }
 }

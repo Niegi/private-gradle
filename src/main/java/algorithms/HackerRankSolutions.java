@@ -1172,6 +1172,37 @@ public class HackerRankSolutions {
   }
 
   /*
+   * Complete the 'stringConstruction' function below.
+   *
+   * The function is expected to return an INTEGER.
+   * The function accepts STRING s as parameter.
+   */
+
+  public static int stringConstruction(String s) {
+    int actualCost = 0;
+    StringBuilder oldString = new StringBuilder(s);
+    StringBuilder newString = new StringBuilder();
+    while (oldString.length() > 0) {
+      boolean freeCopied = false;
+      for (int i=oldString.length() ; i>0 ; i--) {
+        String currentSubstring = oldString.substring(0, i);
+        if (newString.toString().contains(currentSubstring)) {
+          newString.append(currentSubstring);
+          oldString.delete(0, i);
+          freeCopied = true;
+          break;
+        }
+      }
+      if (!freeCopied) {
+        newString.append(oldString.substring(0, 1));
+        oldString.delete(0, 1);
+        actualCost++;
+      }
+    }
+    return actualCost;
+  }
+
+  /*
    * Complete the 'surfaceArea' function below.
    *
    * The function is expected to return an INTEGER.
