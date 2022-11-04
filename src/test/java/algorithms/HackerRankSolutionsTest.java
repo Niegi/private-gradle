@@ -457,11 +457,11 @@ class HackerRankSolutionsTest {
 
   @ParameterizedTest
   @CsvSource({
-//    "aaabbb, 3",
-//    "ab, 1",
-//    "abc, -1",
-//    "mnop, 2",
-//    "xyyx, 0",
+    "aaabbb, 3",
+    "ab, 1",
+    "abc, -1",
+    "mnop, 2",
+    "xyyx, 0",
     "xaxbbbxx, 1"
   })
   void anagramTest(String input, String expected) {
