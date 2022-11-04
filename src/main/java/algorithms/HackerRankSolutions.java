@@ -1259,6 +1259,27 @@ public class HackerRankSolutions {
   }
 
   /*
+   * Complete the 'anagram' function below.
+   *
+   * The function is expected to return an INTEGER.
+   * The function accepts STRING s as parameter.
+   */
+
+  public static int anagram(String s) {
+    if (s.length()%2 != 0) {
+      return -1;
+    }
+    char[] chars = s.substring(0, s.length()/2).toCharArray();
+    String B = s.substring(s.length()/2);
+    for (char c : chars) {
+      if (B.contains(String.valueOf(c))) {
+        B = B.replaceFirst(String.valueOf(c), "");
+      }
+    }
+    return B.length();
+  }
+
+  /*
    * Complete the 'surfaceArea' function below.
    *
    * The function is expected to return an INTEGER.
