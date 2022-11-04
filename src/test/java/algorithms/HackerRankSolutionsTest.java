@@ -5,6 +5,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -332,5 +333,17 @@ class HackerRankSolutionsTest {
     int actual = HackerRankSolutions.stringConstruction(input);
     int expectedInt = Integer.parseInt(expected);
     assertEquals(expectedInt, actual);
+  }
+
+  @Test
+  void gemstonesTest() {
+    List<String> input = List.of(
+      "abcd",
+      "bcde",
+      "cdef"
+    );
+    int actual = HackerRankSolutions.gemstones(input);
+    int expected = 2; // as 'cd' are common chars
+    assertEquals(expected, actual);
   }
 }

@@ -1212,6 +1212,31 @@ public class HackerRankSolutions {
   }
 
   /*
+   * Complete the 'gemstones' function below.
+   *
+   * The function is expected to return an INTEGER.
+   * The function accepts STRING_ARRAY arr as parameter.
+   */
+
+  public static int gemstones(List<String> arr) {
+    char[] chars = arr.get(0).toCharArray();
+    int gemstonesNumber = 0;
+    for (char c : chars) {
+      boolean contains = true;
+      for (String s : arr) {
+        if (!s.contains(String.valueOf(c))) {
+          contains = false;
+          break;
+        }
+      }
+      if (contains) {
+        gemstonesNumber++;
+      }
+    }
+    return gemstonesNumber;
+  }
+
+  /*
    * Complete the 'surfaceArea' function below.
    *
    * The function is expected to return an INTEGER.
