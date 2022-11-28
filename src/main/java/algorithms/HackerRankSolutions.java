@@ -1082,6 +1082,56 @@ public class HackerRankSolutions {
   }
 
   /*
+   * Complete the 'alternate' function below.
+   *
+   * The function is expected to return an INTEGER.
+   * The function accepts STRING s as parameter.
+   */
+
+  public static int alternate(String s) {
+    int longestLength = 0;
+    Set<Character> chars = new HashSet<>();
+    for (Character c : s.toCharArray()) {
+      chars.add(c);
+    }
+    List<Character> charsList = new ArrayList<>(chars);
+    for (int i=0 ; i<charsList.size()-1 ; i++) {
+      for (int j=i+1 ; j<charsList.size() ; j++) {
+        List<Character> charsToRemove = new ArrayList<>(charsList);
+        charsToRemove.remove(charsList.get(i));
+        charsToRemove.remove(charsList.get(j));
+        String trimmedString = trimStringToTwoChars(s, charsToRemove);
+        if (isAlternateString(trimmedString) && trimmedString.length() > longestLength) {
+          longestLength = trimmedString.length();
+        }
+      }
+    }
+    return longestLength;
+  }
+
+  private static String trimStringToTwoChars(String s, List<Character> charsToRemove) {
+    String trimmed = s;
+    for (Character c : charsToRemove) {
+      trimmed = trimmed.replaceAll(c.toString(), "");
+    }
+    return trimmed;
+  }
+
+  private static boolean isAlternateString(String s) {
+    if (s.length() <= 1) {
+      return true;
+    }
+    char charA = s.charAt(0);
+    char charB = s.charAt(1);
+    for (int i=1 ; i<s.length() ; i=i+2) {
+      if (s.charAt(i) != charB || s.charAt(i+1) != charA) {
+        return false;
+      }
+    }
+    return true;
+  }
+
+  /*
    * Complete the 'isValid' function below.
    *
    * The function is expected to return a STRING.
@@ -1134,6 +1184,20 @@ public class HackerRankSolutions {
       llist.next = tmp;
       current = current.next;
     }
+    return llist;
+  }
+
+  public static SinglyLinkedListNode reverseWorkingSolution(SinglyLinkedListNode llist) {
+    SinglyLinkedListNode prev = null;
+    SinglyLinkedListNode current = llist;
+    SinglyLinkedListNode next;
+    while (current != null) {
+      next = current.next;
+      current.next = prev;
+      prev = current;
+      current = next;
+    }
+    llist = prev;
     return llist;
   }
 

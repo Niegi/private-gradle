@@ -469,4 +469,13 @@ class HackerRankSolutionsTest {
     int expectedInt = Integer.parseInt(expected);
     assertEquals(expectedInt, actual);
   }
+
+  @ParameterizedTest
+  @CsvSource({
+    "beabeefeab, 5"
+  })
+  void alternateTest(String input, String expected) {
+    int actual = HackerRankSolutions.alternate(input);
+    assertEquals(Integer.parseInt(expected), actual);
+  }
 }
