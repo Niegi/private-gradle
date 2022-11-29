@@ -473,7 +473,8 @@ class HackerRankSolutionsTest {
   @ParameterizedTest
   @CsvSource({
     "beabeefeab, 5",
-    "asdcbsdcagfsdbgdfanfghbsfdab, 8"
+    "asdcbsdcagfsdbgdfanfghbsfdab, 8",
+    "nkrtilugufndzwdoabujujdeglaihiutnfjqjoaohr, 5"
   })
   void alternateTest(String input, String expected) {
     int actual = HackerRankSolutions.alternate(input);
