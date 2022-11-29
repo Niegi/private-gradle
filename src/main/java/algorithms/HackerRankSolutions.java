@@ -1123,7 +1123,7 @@ public class HackerRankSolutions {
     }
     char charA = s.charAt(0);
     char charB = s.charAt(1);
-    for (int i=1 ; i<s.length() ; i=i+2) {
+    for (int i=1 ; i<s.length()-1 ; i=i+2) {
       if (s.charAt(i) != charB || s.charAt(i+1) != charA) {
         return false;
       }
