@@ -486,7 +486,7 @@ class HackerRankSolutionsTest {
 
   @ParameterizedTest
   @MethodSource("generateDataForWorkbookTest")
-  void workbookTest(int expectedNumberOfSpecialProblems, int numberOfProblemsPerPage, List<Integer> numberOfProblemsInChapters) {
+  void workbookTest(int numberOfProblemsPerPage, List<Integer> numberOfProblemsInChapters, int expectedNumberOfSpecialProblems) {
 //    when
     int actualNumberOfSpecialProblems =
       HackerRankSolutions.workbook(numberOfProblemsInChapters.size(), numberOfProblemsPerPage, numberOfProblemsInChapters);
@@ -497,8 +497,8 @@ class HackerRankSolutionsTest {
 
   static Stream<Arguments> generateDataForWorkbookTest() {
     return Stream.of(
-      Arguments.of(4, 3, Arrays.asList(4, 2, 6, 1, 10)),
-      Arguments.of(11, 20, Arrays.asList(1, 8, 19, 15, 2, 29, 3, 2, 25, 2, 19, 26, 17, 33, 22))
+      Arguments.of(3, Arrays.asList(4, 2, 6, 1, 10), 4),
+      Arguments.of(20, Arrays.asList(1, 8, 19, 15, 2, 29, 3, 2, 25, 2, 19, 26, 17, 33, 22), 11)
     );
   }
 }
