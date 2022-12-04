@@ -1082,6 +1082,31 @@ public class HackerRankSolutions {
   }
 
   /*
+   * Complete the 'workbook' function below.
+   *
+   * The function is expected to return an INTEGER.
+   * The function accepts following parameters:
+   *  1. INTEGER n
+   *  2. INTEGER k
+   *  3. INTEGER_ARRAY arr
+   */
+
+  public static int workbook(int n, int k, List<Integer> arr) {
+    int numberOfSpecialProblems = 0;
+    int currentPage = 1;
+    for (Integer numberOfProblemsInChapter : arr) {
+      int numberOfPagesInCurrentChapter = (int) Math.ceil((double)numberOfProblemsInChapter/k);
+      for (int problemNumber=1 ; problemNumber<=numberOfProblemsInChapter ; problemNumber++) {
+        if (problemNumber == currentPage + (problemNumber-1)/k) {
+          numberOfSpecialProblems++;
+        }
+      }
+      currentPage += numberOfPagesInCurrentChapter;
+    }
+    return numberOfSpecialProblems;
+  }
+
+  /*
    * Complete the 'alternate' function below.
    *
    * The function is expected to return an INTEGER.

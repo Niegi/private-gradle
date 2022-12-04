@@ -2,12 +2,15 @@ package algorithms;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -479,5 +482,23 @@ class HackerRankSolutionsTest {
   void alternateTest(String input, String expected) {
     int actual = HackerRankSolutions.alternate(input);
     assertEquals(Integer.parseInt(expected), actual);
+  }
+
+  @ParameterizedTest
+  @MethodSource("generateDataForWorkbookTest")
+  void workbookTest(int expectedNumberOfSpecialProblems, int numberOfProblemsPerPage, List<Integer> numberOfProblemsInChapters) {
+//    when
+    int actualNumberOfSpecialProblems =
+      HackerRankSolutions.workbook(numberOfProblemsInChapters.size(), numberOfProblemsPerPage, numberOfProblemsInChapters);
+
+//    then
+    assertEquals(expectedNumberOfSpecialProblems, actualNumberOfSpecialProblems);
+  }
+
+  static Stream<Arguments> generateDataForWorkbookTest() {
+    return Stream.of(
+      Arguments.of(4, 3, Arrays.asList(4, 2, 6, 1, 10)),
+      Arguments.of(11, 20, Arrays.asList(1, 8, 19, 15, 2, 29, 3, 2, 25, 2, 19, 26, 17, 33, 22))
+    );
   }
 }
