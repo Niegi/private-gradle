@@ -49,6 +49,15 @@ class ProcessAggregation2 {
     public int hashCode() {
       return Objects.hash(name, memory, pids);
     }
+
+    @Override
+    public String toString() {
+      return "ProcessGroup{" +
+        "name='" + name + '\'' +
+        ", memory=" + memory +
+        ", pids=" + pids +
+        '}';
+    }
   }
 
   static List<ProcessGroup> aggregate(List<Process> processes) {
