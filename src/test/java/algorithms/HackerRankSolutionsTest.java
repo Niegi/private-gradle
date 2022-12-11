@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import static algorithms.HackerRankSolutions.howManyGames;
 import static org.junit.jupiter.api.Assertions.*;
 
 class HackerRankSolutionsTest {
@@ -499,6 +500,23 @@ class HackerRankSolutionsTest {
     return Stream.of(
       Arguments.of(3, Arrays.asList(4, 2, 6, 1, 10), 4),
       Arguments.of(20, Arrays.asList(1, 8, 19, 15, 2, 29, 3, 2, 25, 2, 19, 26, 17, 33, 22), 11)
+    );
+  }
+
+  @ParameterizedTest
+  @MethodSource("generateDataForHowManyGamesTest")
+  void howManyGamesTest(int p, int d, int m, int s, int expected) {
+//    when
+    int actual = howManyGames(p, d, m, s);
+
+//    then
+    assertEquals(expected, actual);
+  }
+
+  static Stream<Arguments> generateDataForHowManyGamesTest() {
+    return Stream.of(
+      Arguments.of(20, 3, 6, 70, 5),
+      Arguments.of(20, 3, 6, 80, 6)
     );
   }
 }

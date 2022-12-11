@@ -1107,6 +1107,29 @@ public class HackerRankSolutions {
   }
 
   /*
+   * Complete the 'howManyGames' function below.
+   *
+   * The function is expected to return an INTEGER.
+   * The function accepts following parameters:
+   *  1. INTEGER p - normal price
+   *  2. INTEGER d - reduce
+   *  3. INTEGER m - minimum price for the game
+   *  4. INTEGER s - budget
+   */
+
+  public static int howManyGames(int p, int d, int m, int s) {
+    int numberOfGames = 0;
+    int moneyLeft = s;
+    int actualPrice = p;
+    while (moneyLeft >= actualPrice) {
+      numberOfGames++;
+      moneyLeft -= actualPrice;
+      actualPrice = Math.max(actualPrice - d, m);
+    }
+    return numberOfGames;
+  }
+
+  /*
    * Complete the 'alternate' function below.
    *
    * The function is expected to return an INTEGER.
