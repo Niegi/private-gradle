@@ -535,6 +535,7 @@ class HackerRankSolutionsTest {
     return Stream.of(
       Arguments.of(List.of(1, 2, 3, 4, 5, 10), List.of(3, 4, 5)),
       Arguments.of(List.of(1, 1, 1, 2, 3, 5), List.of(1, 1, 1))
+//      todo - add arguments that will test extractTriangleWithLongestMaxSide and extractTriangleWithLongestMinSide private methods
     );
   }
 }
