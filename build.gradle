@@ -20,18 +20,20 @@ dependencies {
             'org.junit.jupiter:junit-jupiter-params:5.8.2',
             'org.mockito:mockito-core:4.6.0',
             'org.mockito:mockito-junit-jupiter:4.6.0',
-            'com.fasterxml.jackson.core:jackson-databind:2.13.3',
+            'com.fasterxml.jackson.core:jackson-databind:2.13.4.1',
             'redis.clients:jedis:3.3.0',
             'org.mongodb:mongodb-driver:3.6.3',
             'io.projectreactor:reactor-core:3.3.10.RELEASE',
-            'com.google.code.gson:gson:2.8.6'
+            'com.google.code.gson:gson:2.8.9',
+            'io.rest-assured:rest-assured:5.3.0',
+            'org.hamcrest:hamcrest:2.2'
     )
 
     testRuntimeOnly(
             'org.junit.jupiter:junit-jupiter-engine:5.5.2',
             'org.junit.platform:junit-platform-launcher:1.5.2'
     )
-    implementation 'junit:junit:4.12'
+    implementation 'junit:junit:4.13.1'
 }
 
 task showDate {
