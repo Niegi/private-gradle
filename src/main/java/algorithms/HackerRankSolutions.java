@@ -1400,7 +1400,8 @@ public class HackerRankSolutions {
 
   public static List<Integer> maximumPerimeterTriangle(List<Integer> sticks) {
     Set<List<Integer>> possibleTriangles = createAllPossibleTrianglesFromSticks(sticks);
-    return findTriangleWithMaxPerimeter(possibleTriangles);
+    List<Integer> triangleWithMaxPerimeter = findTriangleWithMaxPerimeter(possibleTriangles);
+    return !triangleWithMaxPerimeter.isEmpty() ? triangleWithMaxPerimeter : List.of(-1);
   }
 
   private static Set<List<Integer>> createAllPossibleTrianglesFromSticks(List<Integer> sticks) {
@@ -1409,8 +1410,8 @@ public class HackerRankSolutions {
     for (int i=0 ; i<sticksSize-2 ; i++) {
       for (int j=i+1 ; j<sticksSize-1 ; j++) {
         for (int k=j+1 ; k<sticksSize ; k++) {
-          if (isTrianglePossible(i, j, k)) {
-            possibleTriangles.add(List.of(i, j, k));
+          if (isTrianglePossible(sticks.get(i), sticks.get(j), sticks.get(k))) {
+            possibleTriangles.add(List.of(sticks.get(i), sticks.get(j), sticks.get(k)));
           }
         }
       }
@@ -1439,9 +1440,43 @@ public class HackerRankSolutions {
       .collect(Collectors.toList());
     if (maxPerimeterTriangles.size() == 1) {
       return maxPerimeterTriangles.get(0);
+    } else {
+      return extractTriangleWithLongestMaxSide(maxPerimeterTriangles);
     }
-//    todo - add handling for several valid triangles having the maximum perimeter
-    return Collections.emptyList();
+  }
+
+  private static List<Integer> extractTriangleWithLongestMaxSide(List<List<Integer>> triangles) {
+    int longestSide = 0;
+    for (List<Integer> triangle : triangles) {
+      Integer maxSide = Collections.max(triangle);
+      if (maxSide > longestSide) {
+        longestSide = maxSide;
+      }
+    }
+    int finalLongestSide = longestSide;
+    List<List<Integer>> trianglesWithLongestSide = triangles.stream()
+      .filter(t -> Collections.max(t) == finalLongestSide)
+      .collect(Collectors.toList());
+    if (trianglesWithLongestSide.size() == 1) {
+      return trianglesWithLongestSide.get(0);
+    } else {
+      return extractTriangleWithLongestMinSide(trianglesWithLongestSide);
+    }
+  }
+
+  private static List<Integer> extractTriangleWithLongestMinSide(List<List<Integer>> triangles) {
+    int longestMinSide = 0;
+    for (List<Integer> triangle : triangles) {
+      Integer minSide = Collections.min(triangle);
+      if (minSide > longestMinSide) {
+        longestMinSide = minSide;
+      }
+    }
+    int finalLongestSide = longestMinSide;
+    return triangles.stream()
+      .filter(t -> Collections.max(t) == finalLongestSide)
+      .findAny()
+      .orElseGet(ArrayList::new);
   }
 
   /*
