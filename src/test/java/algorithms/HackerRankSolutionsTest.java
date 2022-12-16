@@ -13,6 +13,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static algorithms.HackerRankSolutions.howManyGames;
+import static algorithms.HackerRankSolutions.maximumPerimeterTriangle;
 import static org.junit.jupiter.api.Assertions.*;
 
 class HackerRankSolutionsTest {
@@ -517,6 +518,22 @@ class HackerRankSolutionsTest {
     return Stream.of(
       Arguments.of(20, 3, 6, 70, 5),
       Arguments.of(20, 3, 6, 80, 6)
+    );
+  }
+
+  @ParameterizedTest
+  @MethodSource("createDataForMaximumPerimeterTriangleTest")
+  void maximumPerimeterTriangleTest(List<Integer> inputList, List<Integer> expectedList) {
+//    when
+    List<Integer> actualList = maximumPerimeterTriangle(inputList);
+
+//    then
+    assertEquals(expectedList, actualList);
+  }
+
+  private static Stream<Arguments> createDataForMaximumPerimeterTriangleTest() {
+    return Stream.of(
+      Arguments.of(List.of(1, 2, 3, 4, 5, 10), List.of(3, 4, 5))
     );
   }
 }

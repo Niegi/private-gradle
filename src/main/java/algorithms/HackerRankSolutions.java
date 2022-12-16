@@ -1392,6 +1392,59 @@ public class HackerRankSolutions {
   }
 
   /*
+   * Complete the 'maximumPerimeterTriangle' function below.
+   *
+   * The function is expected to return an INTEGER_ARRAY.
+   * The function accepts INTEGER_ARRAY sticks as parameter.
+   */
+
+  public static List<Integer> maximumPerimeterTriangle(List<Integer> sticks) {
+    Set<List<Integer>> possibleTriangles = createAllPossibleTrianglesFromSticks(sticks);
+    return findTriangleWithMaxPerimeter(possibleTriangles);
+  }
+
+  private static Set<List<Integer>> createAllPossibleTrianglesFromSticks(List<Integer> sticks) {
+    int sticksSize = sticks.size();
+    Set<List<Integer>> possibleTriangles = new HashSet<>();
+    for (int i=0 ; i<sticksSize-2 ; i++) {
+      for (int j=i+1 ; j<sticksSize-1 ; j++) {
+        for (int k=j+1 ; k<sticksSize ; k++) {
+          if (isTrianglePossible(i, j, k)) {
+            possibleTriangles.add(List.of(i, j, k));
+          }
+        }
+      }
+    }
+    return possibleTriangles;
+  }
+
+  private static boolean isTrianglePossible(int a, int b, int c) {
+    return a + b > c && a + c > b && b + c > a;
+  }
+
+  private static List<Integer> findTriangleWithMaxPerimeter(Set<List<Integer>> triangles) {
+    int currentMax = 0;
+    for (List<Integer> triangle : triangles) {
+      if (triangle.size() != 3) {
+        continue;
+      }
+      int sum = triangle.stream().mapToInt(Integer::intValue).sum();
+      if (sum > currentMax) {
+        currentMax = sum;
+      }
+    }
+    int finalCurrentMax = currentMax;
+    List<List<Integer>> maxPerimeterTriangles = triangles.stream()
+      .filter(t -> t.stream().mapToInt(Integer::intValue).sum() == finalCurrentMax)
+      .collect(Collectors.toList());
+    if (maxPerimeterTriangles.size() == 1) {
+      return maxPerimeterTriangles.get(0);
+    }
+//    todo - add handling for several valid triangles having the maximum perimeter
+    return Collections.emptyList();
+  }
+
+  /*
    * Complete the 'surfaceArea' function below.
    *
    * The function is expected to return an INTEGER.
