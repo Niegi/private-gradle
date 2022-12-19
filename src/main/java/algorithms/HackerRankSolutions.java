@@ -2,6 +2,7 @@ package algorithms;
 
 
 import java.io.IOException;
+import java.math.BigInteger;
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -1401,6 +1402,7 @@ public class HackerRankSolutions {
   public static List<Integer> maximumPerimeterTriangle(List<Integer> sticks) {
     Set<List<Integer>> possibleTriangles = createAllPossibleTrianglesFromSticks(sticks);
     List<Integer> triangleWithMaxPerimeter = findTriangleWithMaxPerimeter(possibleTriangles);
+    Collections.sort(triangleWithMaxPerimeter);
     return !triangleWithMaxPerimeter.isEmpty() ? triangleWithMaxPerimeter : List.of(-1);
   }
 
@@ -1411,7 +1413,7 @@ public class HackerRankSolutions {
       for (int j=i+1 ; j<sticksSize-1 ; j++) {
         for (int k=j+1 ; k<sticksSize ; k++) {
           if (isTrianglePossible(sticks.get(i), sticks.get(j), sticks.get(k))) {
-            possibleTriangles.add(List.of(sticks.get(i), sticks.get(j), sticks.get(k)));
+            possibleTriangles.add(new ArrayList<>(Arrays.asList(sticks.get(i), sticks.get(j), sticks.get(k))));
           }
         }
       }
@@ -1424,19 +1426,19 @@ public class HackerRankSolutions {
   }
 
   private static List<Integer> findTriangleWithMaxPerimeter(Set<List<Integer>> triangles) {
-    int currentMax = 0;
+    long currentMax = 0;
     for (List<Integer> triangle : triangles) {
       if (triangle.size() != 3) {
         continue;
       }
-      int sum = triangle.stream().mapToInt(Integer::intValue).sum();
+      long sum = triangle.stream().mapToLong(Integer::longValue).sum();
       if (sum > currentMax) {
         currentMax = sum;
       }
     }
-    int finalCurrentMax = currentMax;
+    long finalCurrentMax = currentMax;
     List<List<Integer>> maxPerimeterTriangles = triangles.stream()
-      .filter(t -> t.stream().mapToInt(Integer::intValue).sum() == finalCurrentMax)
+      .filter(t -> t.stream().mapToLong(Integer::longValue).sum() == finalCurrentMax)
       .collect(Collectors.toList());
     if (maxPerimeterTriangles.size() == 1) {
       return maxPerimeterTriangles.get(0);

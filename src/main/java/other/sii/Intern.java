@@ -1,4 +1,4 @@
-package sii;
+package other.sii;
 
 public final class Intern extends Employee {
   private String university;

@@ -1,4 +1,4 @@
-package sii;
+package other.sii;
 
 public class Employee {
   private int id;
