@@ -20,7 +20,7 @@ dependencies {
             'org.junit.jupiter:junit-jupiter-params:5.8.2',
             'org.mockito:mockito-core:4.6.0',
             'org.mockito:mockito-junit-jupiter:4.6.0',
-            'com.fasterxml.jackson.core:jackson-databind:2.13.4.1',
+            'com.fasterxml.jackson.core:jackson-databind:2.14.1',
             'redis.clients:jedis:3.3.0',
             'org.mongodb:mongodb-driver:3.6.3',
             'io.projectreactor:reactor-core:3.3.10.RELEASE',

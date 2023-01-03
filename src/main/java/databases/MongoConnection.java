@@ -8,7 +8,6 @@ import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.MongoIterable;
 import com.mongodb.client.model.Filters;
 import org.bson.Document;
-import static other.Constants.COSMOS_ADMIN_CACHE_MONGO_TEST_CONNECTION_STRING;
 
 public class MongoConnection {
 
@@ -18,7 +17,7 @@ public class MongoConnection {
 
     private static void cosmosDBConnectionByMeTest() {
 
-        MongoClient mongoClient = new MongoClient(new MongoClientURI(COSMOS_ADMIN_CACHE_MONGO_TEST_CONNECTION_STRING.getVariable()));
+        MongoClient mongoClient = new MongoClient(new MongoClientURI("TODO"));
 
         MongoDatabase database = mongoClient.getDatabase("db");
 
