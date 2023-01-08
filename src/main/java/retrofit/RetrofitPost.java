@@ -6,6 +6,12 @@ public class RetrofitPost {
     private String title;
     private String body;
 
+    public RetrofitPost(String userId, String title, String body) {
+        this.userId = userId;
+        this.title = title;
+        this.body = body;
+    }
+
     public String getUserId() {
         return userId;
     }
