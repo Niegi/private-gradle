@@ -1,10 +1,7 @@
 package retrofit;
 
 import retrofit2.Call;
-import retrofit2.http.Body;
-import retrofit2.http.GET;
-import retrofit2.http.POST;
-import retrofit2.http.Path;
+import retrofit2.http.*;
 
 import java.util.List;
 
@@ -18,4 +15,7 @@ public interface RetrofitPostService {
 
     @POST("/posts")
     Call<RetrofitPost> postRetrofitPost(@Body RetrofitPost post);
+
+    @PUT("/posts/{postId}")
+    Call<RetrofitPost> putRetrofitPost(@Body RetrofitPost post, @Path("postId") long postId);
 }

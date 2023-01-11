@@ -1,12 +1,9 @@
 package retrofit;
 
-import okhttp3.OkHttpClient;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import retrofit2.Call;
 import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 import java.util.List;
 
@@ -103,5 +100,24 @@ public class JSonPlaceholderTest {
 
 //        then
         assertThat(responseCode, is(both(greaterThan(200)).and(lessThan(204))));
+    }
+
+    @Test
+    void putPostTest() {
+//        given
+        RetrofitPost post = new RetrofitPost("1", "test title", "test body");
+        Call<RetrofitPost> callSync = service.putRetrofitPost(post, 1);
+
+//        when
+        int responseCode = 0;
+        try {
+            Response<RetrofitPost> response = callSync.execute();
+            responseCode = response.code();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+
+//        then
+        assertThat(responseCode, is(both(greaterThanOrEqualTo(200)).and(lessThan(204))));
     }
 }
