@@ -12,8 +12,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import static algorithms.HackerRankSolutions.howManyGames;
-import static algorithms.HackerRankSolutions.maximumPerimeterTriangle;
+import static algorithms.HackerRankSolutions.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 class HackerRankSolutionsTest {
@@ -538,6 +537,25 @@ class HackerRankSolutionsTest {
       Arguments.of(List.of(10, 11, 11, 10, 10, 12), List.of(11, 11, 12)),
       Arguments.of(List.of(9, 2015, 5294, 58768, 285, 477, 72, 13867, 97, 22445, 48, 36318, 764, 8573, 183, 3270, 81, 1251, 59, 95094), List.of(72, 81, 97)),
       Arguments.of(List.of(1000000000, 1000000000, 1000000000, 1000000000, 1000000000, 1000000000, 1000000000, 1000000000, 1000000000, 1000000000, 1000000000, 1000000000, 1000000000, 1000000000, 1000000000, 1000000000, 1000000000, 1000000000, 1000000000, 1000000000, 1000000000, 1000000000, 1000000000, 1000000000, 1000000000, 1000000000, 1000000000, 1000000000, 1000000000, 1000000000, 1000000000, 1000000000, 1000000000, 1000000000, 1000000000, 1000000000, 1000000000, 1000000000, 1000000000, 1000000000, 1000000000, 1000000000, 1000000000, 1000000000, 1000000000, 1000000000, 1000000000, 1000000000, 1000000000, 1000000000), List.of(1000000000, 1000000000, 1000000000))
+    );
+  }
+
+  @ParameterizedTest
+  @MethodSource("dataForMissingNumbersTest")
+  void missingNumbersTest(List<Integer> checkedList, List<Integer> fullList, List<Integer> expectedMissingNumbers) {
+//    when
+    List<Integer> actualMissingNumbers = missingNumbers(checkedList, fullList);
+
+//    then
+    assertEquals(expectedMissingNumbers, actualMissingNumbers);
+  }
+
+  private static Stream<Arguments> dataForMissingNumbersTest() {
+    return Stream.of(
+            Arguments.of(
+                    List.of(203, 204, 205, 206, 207, 208, 203, 204, 205, 206),
+                    List.of(203, 204, 204, 205, 206, 207, 205, 208, 203, 206, 205, 206, 204),
+                    List.of(204, 205, 206))
     );
   }
 }

@@ -2,7 +2,6 @@ package algorithms;
 
 
 import java.io.IOException;
-import java.math.BigInteger;
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -1096,9 +1095,9 @@ public class HackerRankSolutions {
     int numberOfSpecialProblems = 0;
     int currentPage = 1;
     for (Integer numberOfProblemsInChapter : arr) {
-      int numberOfPagesInCurrentChapter = (int) Math.ceil((double)numberOfProblemsInChapter/k);
-      for (int problemNumber=1 ; problemNumber<=numberOfProblemsInChapter ; problemNumber++) {
-        if (problemNumber == currentPage + (problemNumber-1)/k) {
+      int numberOfPagesInCurrentChapter = (int) Math.ceil((double) numberOfProblemsInChapter / k);
+      for (int problemNumber = 1; problemNumber <= numberOfProblemsInChapter; problemNumber++) {
+        if (problemNumber == currentPage + (problemNumber - 1) / k) {
           numberOfSpecialProblems++;
         }
       }
@@ -1144,8 +1143,8 @@ public class HackerRankSolutions {
       chars.add(c);
     }
     List<Character> charsList = new ArrayList<>(chars);
-    for (int i=0 ; i<charsList.size()-1 ; i++) {
-      for (int j=i+1 ; j<charsList.size() ; j++) {
+    for (int i = 0; i < charsList.size() - 1; i++) {
+      for (int j = i + 1; j < charsList.size(); j++) {
         List<Character> charsToRemove = new ArrayList<>(charsList);
         charsToRemove.remove(charsList.get(i));
         charsToRemove.remove(charsList.get(j));
@@ -1172,8 +1171,8 @@ public class HackerRankSolutions {
     }
     char charA = s.charAt(0);
     char charB = s.charAt(1);
-    for (int i=1 ; i<s.length()-1 ; i=i+2) {
-      if (s.charAt(i) != charB || s.charAt(i+1) != charA) {
+    for (int i = 1; i < s.length() - 1; i = i + 2) {
+      if (s.charAt(i) != charB || s.charAt(i + 1) != charA) {
         return false;
       }
     }
@@ -1264,7 +1263,7 @@ public class HackerRankSolutions {
     Collections.sort(sortedA);
     List<Integer> sortedB = new ArrayList<>(b);
     Collections.sort(sortedB);
-    return (int) IntStream.rangeClosed(sortedA.get(sortedA.size()-1), sortedB.get(0))
+    return (int) IntStream.rangeClosed(sortedA.get(sortedA.size() - 1), sortedB.get(0))
       .filter(candidate -> {
         for (Integer i : sortedA) {
           if (candidate % i != 0) {
@@ -1297,7 +1296,7 @@ public class HackerRankSolutions {
     StringBuilder newString = new StringBuilder();
     while (oldString.length() > 0) {
       boolean freeCopied = false;
-      for (int i=oldString.length() ; i>0 ; i--) {
+      for (int i = oldString.length(); i > 0; i--) {
         String currentSubstring = oldString.substring(0, i);
         if (newString.toString().contains(currentSubstring)) {
           newString.append(currentSubstring);
@@ -1357,14 +1356,14 @@ public class HackerRankSolutions {
    */
 
   public static int beautifulBinaryString(String b) {
-    if (b.length() < 3 ) {
+    if (b.length() < 3) {
       return 0;
     }
     int changesNumber = 0;
     StringBuilder builder = new StringBuilder(b);
-    for (int i=2 ; i<b.length() ; i++) {
-      if (builder.substring(i-2, i+1).equals("010")) {
-        builder.replace(i, i+1, "1");
+    for (int i = 2; i < b.length(); i++) {
+      if (builder.substring(i - 2, i + 1).equals("010")) {
+        builder.replace(i, i + 1, "1");
         changesNumber++;
       }
     }
@@ -1379,11 +1378,11 @@ public class HackerRankSolutions {
    */
 
   public static int anagram(String s) {
-    if (s.length()%2 != 0) {
+    if (s.length() % 2 != 0) {
       return -1;
     }
-    char[] chars = s.substring(0, s.length()/2).toCharArray();
-    String B = s.substring(s.length()/2);
+    char[] chars = s.substring(0, s.length() / 2).toCharArray();
+    String B = s.substring(s.length() / 2);
     for (char c : chars) {
       if (B.contains(String.valueOf(c))) {
         B = B.replaceFirst(String.valueOf(c), "");
@@ -1409,9 +1408,9 @@ public class HackerRankSolutions {
   private static Set<List<Integer>> createAllPossibleTrianglesFromSticks(List<Integer> sticks) {
     int sticksSize = sticks.size();
     Set<List<Integer>> possibleTriangles = new HashSet<>();
-    for (int i=0 ; i<sticksSize-2 ; i++) {
-      for (int j=i+1 ; j<sticksSize-1 ; j++) {
-        for (int k=j+1 ; k<sticksSize ; k++) {
+    for (int i = 0; i < sticksSize - 2; i++) {
+      for (int j = i + 1; j < sticksSize - 1; j++) {
+        for (int k = j + 1; k < sticksSize; k++) {
           if (isTrianglePossible(sticks.get(i), sticks.get(j), sticks.get(k))) {
             possibleTriangles.add(new ArrayList<>(Arrays.asList(sticks.get(i), sticks.get(j), sticks.get(k))));
           }
@@ -1479,6 +1478,42 @@ public class HackerRankSolutions {
       .filter(t -> Collections.max(t) == finalLongestSide)
       .findAny()
       .orElseGet(ArrayList::new);
+  }
+
+  /*
+   * Complete the 'missingNumbers' function below.
+   *
+   * The function is expected to return an INTEGER_ARRAY.
+   * The function accepts following parameters:
+   *  1. INTEGER_ARRAY arr
+   *  2. INTEGER_ARRAY brr
+   */
+
+  public static List<Integer> missingNumbers(List<Integer> arr, List<Integer> brr) {
+    List<Integer> missingNumbers = new ArrayList<>();
+    Map<Integer, Integer> arrMap = new HashMap<>();
+    Map<Integer, Integer> brrMap = new HashMap<>();
+    for (Integer i : arr) {
+      if (!arrMap.containsKey(i)) {
+        arrMap.put(i, 1);
+      } else {
+        arrMap.put(i, arrMap.get(i) + 1);
+      }
+    }
+    for (Integer i : brr) {
+      if (!brrMap.containsKey(i)) {
+        brrMap.put(i, 1);
+      } else {
+        brrMap.put(i, brrMap.get(i) + 1);
+      }
+    }
+    for (Integer i : brrMap.keySet()) {
+      if (!arrMap.containsKey(i) || arrMap.get(i) < brrMap.get(i)) {
+        missingNumbers.add(i);
+      }
+    }
+    Collections.sort(missingNumbers);
+    return missingNumbers;
   }
 
   /*
