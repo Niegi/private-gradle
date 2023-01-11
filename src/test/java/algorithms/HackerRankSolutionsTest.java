@@ -558,4 +558,20 @@ class HackerRankSolutionsTest {
                     List.of(204, 205, 206))
     );
   }
+
+  @ParameterizedTest
+  @MethodSource("dataForPairsTest")
+  void pairsTest(int diff, List<Integer> list, int expexted) {
+//    when
+    int actual = pairs(diff, list);
+
+//    then
+    assertEquals(expexted, actual);
+  }
+
+  private static Stream<Arguments> dataForPairsTest() {
+    return Stream.of(
+      Arguments.of(2, Arrays.asList(1, 5, 3, 4, 2), 3)
+    );
+  }
 }

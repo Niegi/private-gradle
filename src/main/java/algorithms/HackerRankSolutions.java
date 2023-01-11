@@ -1517,6 +1517,32 @@ public class HackerRankSolutions {
   }
 
   /*
+   * Complete the 'pairs' function below.
+   *
+   * The function is expected to return an INTEGER.
+   * The function accepts following parameters:
+   *  1. INTEGER k
+   *  2. INTEGER_ARRAY arr
+   */
+
+  public static int pairs(int k, List<Integer> arr) {
+    Collections.sort(arr);
+    int counter=0;
+    for (int i=0 ; i<arr.size()-1 ; i++) {
+      for (int j=i+1 ; j<arr.size() ; j++) {
+        int diff = Math.abs(arr.get(i) - arr.get(j));
+        if (diff == k) {
+          counter++;
+        }
+        if (diff > k) {
+          break;
+        }
+      }
+    }
+    return counter;
+  }
+
+  /*
    * Complete the 'surfaceArea' function below.
    *
    * The function is expected to return an INTEGER.
