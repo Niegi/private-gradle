@@ -588,4 +588,21 @@ class HackerRankSolutionsTest {
       Arguments.of(Arrays.asList(3L, 3L, 9L, 9L, 5L), 7L, 6L)
     );
   }
+
+  @ParameterizedTest
+  @MethodSource("dataForMinimumLossTest")
+  void minimumLossTest(List<Long> input, int expected) {
+//    when
+    int actual = minimumLoss(input);
+
+//    then
+    assertEquals(expected, actual);
+  }
+
+  private static Stream<Arguments> dataForMinimumLossTest() {
+    return Stream.of(
+      Arguments.of(List.of(5L, 10L, 3L), 2),
+      Arguments.of(List.of(20L, 7L, 8L, 2L, 5L), 2)
+    );
+  }
 }

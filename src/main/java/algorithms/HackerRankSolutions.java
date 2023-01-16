@@ -1543,6 +1543,26 @@ public class HackerRankSolutions {
   }
 
   /*
+   * Complete the 'minimumLoss' function below.
+   *
+   * The function is expected to return an INTEGER.
+   * The function accepts LONG_INTEGER_ARRAY price as parameter.
+   */
+
+  public static int minimumLoss(List<Long> price) {
+    int min = Integer.MAX_VALUE;
+    for (int i=0 ; i<price.size()-1 ; i++) {
+      for (int j=i+1 ; j<price.size() ; j++) {
+        int curr = (int) (price.get(i) - price.get(j));
+        if (curr > 0 && curr<min) {
+          min = curr;
+        }
+      }
+    }
+    return min;
+  }
+
+  /*
    * Complete the 'maximumSum' function below.
    *
    * The function is expected to return a LONG_INTEGER.
