@@ -1527,9 +1527,9 @@ public class HackerRankSolutions {
 
   public static int pairs(int k, List<Integer> arr) {
     Collections.sort(arr);
-    int counter=0;
-    for (int i=0 ; i<arr.size()-1 ; i++) {
-      for (int j=i+1 ; j<arr.size() ; j++) {
+    int counter = 0;
+    for (int i = 0; i < arr.size() - 1; i++) {
+      for (int j = i + 1; j < arr.size(); j++) {
         int diff = Math.abs(arr.get(i) - arr.get(j));
         if (diff == k) {
           counter++;
@@ -1540,6 +1540,52 @@ public class HackerRankSolutions {
       }
     }
     return counter;
+  }
+
+  /*
+   * Complete the 'maximumSum' function below.
+   *
+   * The function is expected to return a LONG_INTEGER.
+   * The function accepts following parameters:
+   *  1. LONG_INTEGER_ARRAY a
+   *  2. LONG_INTEGER m
+   */
+
+  public static long maximumSum(List<Long> a, long m) {
+    List<Long> sumsOfAllSubArrays = findSumsOfAllSubArrays(a);
+    long maxModulo = 0;
+    for (long sum : sumsOfAllSubArrays) {
+      long currentModulo = sum % m;
+      if (currentModulo > maxModulo) {
+        maxModulo = currentModulo;
+      }
+    }
+    return maxModulo;
+  }
+
+  private static List<Long> findSumsOfAllSubArrays(List<Long> arr) {
+    List<Long> sums = new ArrayList<>();
+    List<List<Long>> allSublists = getAllSubsets(arr);
+    for (List<Long> sublist : allSublists) {
+      long sum = sublist.stream().mapToLong(Long::longValue).sum();
+      sums.add(sum);
+    }
+    return sums;
+  }
+
+  public static List<List<Long>> getAllSubsets(List<Long> input) {
+    long allMasks = 1L << input.size();
+    List<List<Long>> output = new ArrayList<>();
+    for (long i = 0; i < allMasks; i++) {
+      List<Long> sub = new ArrayList<>();
+      for (int j = 0; j < input.size(); j++) {
+        if ((i & (1L << j)) > 0) {
+          sub.add(input.get(j));
+        }
+      }
+      output.add(sub);
+    }
+    return output;
   }
 
   /*

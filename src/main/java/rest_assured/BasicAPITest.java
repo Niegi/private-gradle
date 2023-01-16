@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
+import static io.restassured.RestAssured.*;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.not;
@@ -24,19 +25,19 @@ public class BasicAPITest {
 
   @BeforeEach
   private void setup() {
-    RestAssured.baseURI = CAT_FACT_BASE_URL;
+    baseURI = CAT_FACT_BASE_URL;
   }
 
   @Test
   void shouldReturn200() {
-    Response response = RestAssured.get(SINGLE_FACT_PATH);
+    Response response = get(SINGLE_FACT_PATH);
     assertEquals(response.getStatusCode(), 200);
   }
 
   @Test
   void shouldParseResponseToFact() {
 //    when
-    Response response = RestAssured.get(SINGLE_FACT_PATH);
+    Response response = get(SINGLE_FACT_PATH);
     ResponseBody body = response.getBody();
     CatFact catFact = body.as(CatFact.class);
 
@@ -47,10 +48,10 @@ public class BasicAPITest {
   @Test
   void shouldParseResponseBodyToListOfPosts() {
 //    given
-    RestAssured.baseURI = JSON_PLACEHOLDER_BASE_URL;
+    baseURI = JSON_PLACEHOLDER_BASE_URL;
 
 //    when
-    Response response = RestAssured.get(POSTS_PATH);
+    Response response = get(POSTS_PATH);
     ResponseBody body = response.getBody();
     List<Post> posts = body.jsonPath().getList("", Post.class);
 
@@ -61,7 +62,7 @@ public class BasicAPITest {
 
   @Test
   void shouldReturn200WhenPostNewPost() {
-    RestAssured.baseURI = JSON_PLACEHOLDER_BASE_URL;
+    baseURI = JSON_PLACEHOLDER_BASE_URL;
     Post post = new Post(1, "My test title", "My test body");
 
     given()

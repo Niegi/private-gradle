@@ -6,10 +6,8 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static algorithms.HackerRankSolutions.*;
@@ -552,26 +550,42 @@ class HackerRankSolutionsTest {
 
   private static Stream<Arguments> dataForMissingNumbersTest() {
     return Stream.of(
-            Arguments.of(
-                    List.of(203, 204, 205, 206, 207, 208, 203, 204, 205, 206),
-                    List.of(203, 204, 204, 205, 206, 207, 205, 208, 203, 206, 205, 206, 204),
-                    List.of(204, 205, 206))
+      Arguments.of(
+        List.of(203, 204, 205, 206, 207, 208, 203, 204, 205, 206),
+        List.of(203, 204, 204, 205, 206, 207, 205, 208, 203, 206, 205, 206, 204),
+        List.of(204, 205, 206))
     );
   }
 
   @ParameterizedTest
   @MethodSource("dataForPairsTest")
-  void pairsTest(int diff, List<Integer> list, int expexted) {
+  void pairsTest(int diff, List<Integer> list, int expected) {
 //    when
     int actual = pairs(diff, list);
 
 //    then
-    assertEquals(expexted, actual);
+    assertEquals(expected, actual);
   }
 
   private static Stream<Arguments> dataForPairsTest() {
     return Stream.of(
       Arguments.of(2, Arrays.asList(1, 5, 3, 4, 2), 3)
+    );
+  }
+
+  @ParameterizedTest
+  @MethodSource("dataForMaximumSumTest")
+  void maximumSumTest(List<Long> a, long m, long expected) {
+//    when
+    long actual = maximumSum(a, m);
+
+//    then
+    assertEquals(expected, actual);
+  }
+
+  private static Stream<Arguments> dataForMaximumSumTest() {
+    return Stream.of(
+      Arguments.of(Arrays.asList(3L, 3L, 9L, 9L, 5L), 7L, 6L)
     );
   }
 }
