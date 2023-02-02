@@ -1552,8 +1552,16 @@ public class HackerRankSolutions {
    */
 
   public static String countLuck(List<String> matrix, int k) {
-    convertCountLuckList(matrix);
-    return null;
+    int numberOfDecisions = 0;
+    String[][] forest = convertCountLuckList(matrix);
+    List<Integer> lastPosition = List.of(-1, -1);
+    List<Integer> currentPosition = findSymbolPosition(forest, "M");
+    List<Integer> portalPosition = findSymbolPosition(forest, "*");
+    while (!currentPosition.equals(portalPosition)) {
+
+    }
+
+    return numberOfDecisions == k ? "Satisfied" : "Oops!";
   }
 
   private static String[][] convertCountLuckList(List<String> matrix) {
@@ -1569,6 +1577,23 @@ public class HackerRankSolutions {
     }
     System.out.println(Arrays.deepToString(newMatrix));
     return newMatrix;
+  }
+
+  private static List<Integer> findSymbolPosition(String[][] forest, String symbol) {
+    for (int i=1 ; i<forest.length ; i++) {
+      for (int j=1 ; j<forest[0].length ; j++) {
+        if (forest[i][j].equals(symbol)) {
+          return List.of(i, j);
+        }
+      }
+    }
+    return null;
+  }
+
+  private static List<List<Integer>> findPossiblePaths(String[][] forest, List<Integer> currentPosition, List<Integer> lastPosition) {
+    List<List<Integer>> possiblePaths = new ArrayList<>();
+
+    return possiblePaths;
   }
 
   /*
