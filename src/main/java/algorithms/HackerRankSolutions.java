@@ -1543,6 +1543,35 @@ public class HackerRankSolutions {
   }
 
   /*
+   * Complete the 'countLuck' function below.
+   *
+   * The function is expected to return a STRING.
+   * The function accepts following parameters:
+   *  1. STRING_ARRAY matrix
+   *  2. INTEGER k
+   */
+
+  public static String countLuck(List<String> matrix, int k) {
+    convertCountLuckList(matrix);
+    return null;
+  }
+
+  private static String[][] convertCountLuckList(List<String> matrix) {
+    String[][] newMatrix = new String[matrix.size()+2][matrix.get(0).length()+2];
+    Arrays.fill(newMatrix[0], "X");
+    Arrays.fill(newMatrix[newMatrix.length-1], "X");
+    for (int i=0 ; i<matrix.size() ; i++) {
+      newMatrix[i+1][0] = "X";
+      newMatrix[i+1][matrix.get(0).length()+1] = "X";
+      for (int j=0 ; j<matrix.get(0).length() ; j++) {
+        newMatrix[i+1][j+1] = matrix.get(i).substring(j, j+1);
+      }
+    }
+    System.out.println(Arrays.deepToString(newMatrix));
+    return newMatrix;
+  }
+
+  /*
    * Complete the 'minimumLoss' function below.
    *
    * The function is expected to return an INTEGER.

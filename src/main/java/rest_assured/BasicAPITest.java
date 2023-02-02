@@ -1,6 +1,5 @@
 package rest_assured;
 
-import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import io.restassured.response.ResponseBody;
 import org.junit.jupiter.api.BeforeEach;
@@ -9,7 +8,6 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 
 import static io.restassured.RestAssured.*;
-import static io.restassured.RestAssured.given;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.not;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -24,7 +22,7 @@ public class BasicAPITest {
   private static final String POSTS_PATH = "/posts";
 
   @BeforeEach
-  private void setup() {
+  public void setup() {
     baseURI = CAT_FACT_BASE_URL;
   }
 

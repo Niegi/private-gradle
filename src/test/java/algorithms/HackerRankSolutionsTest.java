@@ -605,4 +605,22 @@ class HackerRankSolutionsTest {
       Arguments.of(List.of(20L, 7L, 8L, 2L, 5L), 2)
     );
   }
+
+  @ParameterizedTest
+  @MethodSource("dataForCountLuckTest")
+  void countLuckTest(List<String> inputMatrix, int ronGuess, String expected) {
+//    when
+    String actual = countLuck(inputMatrix, ronGuess);
+
+//    then
+    assertEquals(expected, actual);
+  }
+
+  private static Stream<Arguments> dataForCountLuckTest() {
+    return Stream.of(
+      Arguments.of(List.of("*.M", ".X."), 1, "Impressed"),
+      Arguments.of(List.of(".X.X......X", ".X*.X.XXX.X", ".XX.X.XM...", "......XXXX."), 3, "Impressed"),
+      Arguments.of(List.of(".X.X......X", ".X*.X.XXX.X", ".XX.X.XM...", "......XXXX."), 4, "Oops!")
+    );
+  }
 }
