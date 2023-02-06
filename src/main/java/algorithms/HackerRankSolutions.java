@@ -1565,14 +1565,14 @@ public class HackerRankSolutions {
   }
 
   private static String[][] convertCountLuckList(List<String> matrix) {
-    String[][] newMatrix = new String[matrix.size()+2][matrix.get(0).length()+2];
+    String[][] newMatrix = new String[matrix.size() + 2][matrix.get(0).length() + 2];
     Arrays.fill(newMatrix[0], "X");
-    Arrays.fill(newMatrix[newMatrix.length-1], "X");
-    for (int i=0 ; i<matrix.size() ; i++) {
-      newMatrix[i+1][0] = "X";
-      newMatrix[i+1][matrix.get(0).length()+1] = "X";
-      for (int j=0 ; j<matrix.get(0).length() ; j++) {
-        newMatrix[i+1][j+1] = matrix.get(i).substring(j, j+1);
+    Arrays.fill(newMatrix[newMatrix.length - 1], "X");
+    for (int i = 0; i < matrix.size(); i++) {
+      newMatrix[i + 1][0] = "X";
+      newMatrix[i + 1][matrix.get(0).length() + 1] = "X";
+      for (int j = 0; j < matrix.get(0).length(); j++) {
+        newMatrix[i + 1][j + 1] = matrix.get(i).substring(j, j + 1);
       }
     }
     System.out.println(Arrays.deepToString(newMatrix));
@@ -1580,8 +1580,8 @@ public class HackerRankSolutions {
   }
 
   private static List<Integer> findSymbolPosition(String[][] forest, String symbol) {
-    for (int i=1 ; i<forest.length ; i++) {
-      for (int j=1 ; j<forest[0].length ; j++) {
+    for (int i = 1; i < forest.length; i++) {
+      for (int j = 1; j < forest[0].length; j++) {
         if (forest[i][j].equals(symbol)) {
           return List.of(i, j);
         }
@@ -1596,6 +1596,22 @@ public class HackerRankSolutions {
     return possiblePaths;
   }
 
+  static SinglyLinkedListNode insertNodeAtTail(SinglyLinkedListNode head, int data) {
+
+    SinglyLinkedListNode newNode = new SinglyLinkedListNode(data);
+
+    if (head == null)
+      head = newNode;
+    else {
+      SinglyLinkedListNode iter = head;
+      while (iter.next != null) {
+        iter = iter.next;
+      }
+      iter.next = newNode;
+    }
+    return head;
+  }
+
   /*
    * Complete the 'minimumLoss' function below.
    *
@@ -1605,10 +1621,10 @@ public class HackerRankSolutions {
 
   public static int minimumLoss(List<Long> price) {
     int min = Integer.MAX_VALUE;
-    for (int i=0 ; i<price.size()-1 ; i++) {
-      for (int j=i+1 ; j<price.size() ; j++) {
+    for (int i = 0; i < price.size() - 1; i++) {
+      for (int j = i + 1; j < price.size(); j++) {
         int curr = (int) (price.get(i) - price.get(j));
-        if (curr > 0 && curr<min) {
+        if (curr > 0 && curr < min) {
           min = curr;
         }
       }
@@ -1796,4 +1812,11 @@ class DoublyLinkedListNode {
 class SinglyLinkedListNode {
   int data;
   SinglyLinkedListNode next;
+
+  public SinglyLinkedListNode() {
+  }
+
+  public SinglyLinkedListNode(int data) {
+    this.data = data;
+  }
 }
