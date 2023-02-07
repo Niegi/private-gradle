@@ -1612,6 +1612,12 @@ public class HackerRankSolutions {
     return head;
   }
 
+  static SinglyLinkedListNode insertNodeAtHead(SinglyLinkedListNode llist, int data) {
+    SinglyLinkedListNode newNode = new SinglyLinkedListNode(data);
+    newNode.next = llist;
+    return newNode;
+  }
+
   /*
    * Complete the 'minimumLoss' function below.
    *
