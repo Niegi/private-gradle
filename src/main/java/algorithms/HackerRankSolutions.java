@@ -1618,6 +1618,19 @@ public class HackerRankSolutions {
     return newNode;
   }
 
+  public static SinglyLinkedListNode insertNodeAtPosition(SinglyLinkedListNode llist, int data, int position) {
+    SinglyLinkedListNode newNode = new SinglyLinkedListNode(data);
+    SinglyLinkedListNode previous = llist;
+    SinglyLinkedListNode iterator = llist;
+    for (int i = 0; i < position; i++) {
+      previous = iterator;
+      iterator = iterator.next;
+    }
+    previous.next = newNode;
+    newNode.next = iterator;
+    return llist;
+  }
+
   /*
    * Complete the 'minimumLoss' function below.
    *
