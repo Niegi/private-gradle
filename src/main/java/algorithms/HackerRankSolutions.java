@@ -1455,10 +1455,18 @@ public class HackerRankSolutions {
   }
 
   private static Integer findUniqueNumber(List<Integer> nums) {
-    return nums.stream()
-      .filter(i -> Collections.frequency(nums, i) == 1)
-      .findFirst()
-      .orElse(0);
+    HashSet<Integer> temp = new HashSet<>();
+    HashSet<Integer> output = new HashSet<>();
+
+    for (Integer element : nums) {
+      if (temp.contains(element)) {
+        output.remove(element);
+      } else {
+        temp.add(element);
+        output.add(element);
+      }
+    }
+    return output.stream().findFirst().get();
   }
 
   /*
