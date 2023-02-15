@@ -1392,6 +1392,76 @@ public class HackerRankSolutions {
   }
 
   /*
+   * Complete the 'numDuplicates' function below.
+   *
+   * The function is expected to return an INTEGER.
+   * The function accepts following parameters:
+   *  1. STRING_ARRAY name
+   *  2. INTEGER_ARRAY price
+   *  3. INTEGER_ARRAY weight
+   */
+
+  public static int numDuplicates(List<String> name, List<Integer> price, List<Integer> weight) {
+    class DuplicateProduct {
+      String name;
+      Integer price;
+      Integer weight;
+
+      public DuplicateProduct(String name, Integer price, Integer weight) {
+        this.name = name;
+        this.price = price;
+        this.weight = weight;
+      }
+
+      @Override
+      public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        DuplicateProduct that = (DuplicateProduct) o;
+        return name.equals(that.name) && price.equals(that.price) && weight.equals(that.weight);
+      }
+
+      @Override
+      public int hashCode() {
+        return Objects.hash(name, price, weight);
+      }
+    }
+    Set<DuplicateProduct> uniqueProducts = new HashSet<>();
+    for (int i = 0; i < name.size(); i++) {
+      uniqueProducts.add(
+        new DuplicateProduct(name.get(i), price.get(i), weight.get(i))
+      );
+    }
+    return name.size() - uniqueProducts.size();
+  }
+
+  /*
+   * Complete the 'missingPrisoner' function below.
+   *
+   * The function is expected to return an INTEGER_ARRAY.
+   * The function accepts 2D_INTEGER_ARRAY locations as parameter.
+   */
+
+  public static List<Integer> missingPrisoner(List<List<Integer>> locations) {
+    List<Integer> allXs = new ArrayList<>();
+    List<Integer> allYs = new ArrayList<>();
+    for (List<Integer> location : locations) {
+      allXs.add(location.get(0));
+      allYs.add(location.get(1));
+    }
+    Integer uniqueX = findUniqueNumber(allXs);
+    Integer uniqueY = findUniqueNumber(allYs);
+    return List.of(uniqueX, uniqueY);
+  }
+
+  private static Integer findUniqueNumber(List<Integer> nums) {
+    return nums.stream()
+      .filter(i -> Collections.frequency(nums, i) == 1)
+      .findFirst()
+      .orElse(0);
+  }
+
+  /*
    * Complete the 'maximumPerimeterTriangle' function below.
    *
    * The function is expected to return an INTEGER_ARRAY.

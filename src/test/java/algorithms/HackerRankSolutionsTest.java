@@ -623,4 +623,20 @@ class HackerRankSolutionsTest {
       Arguments.of(List.of(".X.X......X", ".X*.X.XXX.X", ".XX.X.XM...", "......XXXX."), 4, "Oops!")
     );
   }
+
+  @ParameterizedTest
+  @MethodSource("dataForMissingPrisonerTest")
+  void missingPrisonerTest(List<List<Integer>> input, List<Integer> expected) {
+//    when
+    List<Integer> actual = missingPrisoner(input);
+
+//    then
+    assertEquals(expected, actual);
+  }
+
+  private static Stream<Arguments> dataForMissingPrisonerTest() {
+    return Stream.of(
+      Arguments.of(List.of(List.of(1, 1), List.of(5, 1), List.of(5, 6)), List.of(1, 6))
+    );
+  }
 }
