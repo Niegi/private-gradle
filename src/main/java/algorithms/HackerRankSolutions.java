@@ -1470,6 +1470,29 @@ public class HackerRankSolutions {
   }
 
   /*
+   * Complete the 'organizingContainers' function below.
+   *
+   * The function is expected to return a STRING.
+   * The function accepts 2D_INTEGER_ARRAY container as parameter.
+   */
+
+  public static String organizingContainers(List<List<Integer>> container) {
+    Map<Integer, Integer> numberOfBallsOfEachType = new HashMap<>();
+    for (List<Integer> list : container) {
+      for (int i=0 ; i<list.size() ; i++) {
+        if (!numberOfBallsOfEachType.containsKey(i)) {
+          numberOfBallsOfEachType.put(i, list.get(i));
+        } else {
+          numberOfBallsOfEachType.put(i, numberOfBallsOfEachType.get(i) + list.get(i));
+        }
+      }
+    }
+    List<Integer> numberOfBallsOfEachTypeAsList = numberOfBallsOfEachType.values().stream().sorted().collect(Collectors.toList());
+    List<Integer> capacityOfEachContainer = container.stream().map(list -> list.stream().mapToInt(Integer::valueOf).sum()).sorted().collect(Collectors.toList());
+    return numberOfBallsOfEachTypeAsList.equals(capacityOfEachContainer) ? "Possible" : "Impossible";
+  }
+
+  /*
    * Complete the 'maximumPerimeterTriangle' function below.
    *
    * The function is expected to return an INTEGER_ARRAY.

@@ -639,4 +639,26 @@ class HackerRankSolutionsTest {
       Arguments.of(List.of(List.of(1, 1), List.of(5, 1), List.of(5, 6)), List.of(1, 6))
     );
   }
+
+  @ParameterizedTest
+  @MethodSource("dataForOrganizingContainersTest")
+  void organizingContainersTest(List<List<Integer>> input, String expectedOutput) {
+    String actual = organizingContainers(input);
+    assertEquals(expectedOutput, actual);
+  }
+
+  static Stream<Arguments> dataForOrganizingContainersTest() {
+    return Stream.of(
+      Arguments.of(
+        List.of(
+          List.of(1, 3, 1), List.of(2, 1, 2), List.of(3, 3, 3)
+        ),
+        "Impossible"),
+      Arguments.of(
+        List.of(
+          List.of(0, 2, 1), List.of(1, 1, 1), List.of(2, 0, 0)
+        ),
+        "Possible")
+    );
+  }
 }

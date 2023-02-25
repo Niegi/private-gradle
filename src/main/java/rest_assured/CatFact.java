@@ -4,6 +4,14 @@ public class CatFact {
   private String fact;
   private int length;
 
+  public CatFact() {
+  }
+
+  public CatFact(String fact, int length) {
+    this.fact = fact;
+    this.length = length;
+  }
+
   public String getFact() {
     return fact;
   }
