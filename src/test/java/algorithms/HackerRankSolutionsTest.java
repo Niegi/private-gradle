@@ -661,4 +661,22 @@ class HackerRankSolutionsTest {
         "Possible")
     );
   }
+
+  @ParameterizedTest
+  @MethodSource("dataForBiggerIsGreaterTest")
+  void biggerIsGreaterTest(String input, String expected) {
+    String actual = biggerIsGreater(input);
+    assertEquals(expected, actual);
+  }
+
+  private static List<Arguments> dataForBiggerIsGreaterTest() {
+    return List.of(
+      Arguments.of("lmno", "lmon"),
+      Arguments.of("dcba", "no answer"),
+      Arguments.of("dcbb", "no answer"),
+      Arguments.of("abdc", "acbd"),
+      Arguments.of("abcd", "abdc"),
+      Arguments.of("fedcbabcd", "fedcbabdc")
+    );
+  }
 }

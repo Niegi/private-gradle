@@ -1493,6 +1493,34 @@ public class HackerRankSolutions {
   }
 
   /*
+   * Complete the 'biggerIsGreater' function below.
+   *
+   * The function is expected to return a STRING.
+   * The function accepts STRING w as parameter.
+   */
+
+  public static String biggerIsGreater(String w) {
+    for (int i=w.length()-2 ; i>=0 ; i--) {
+      char actual = w.charAt(i);
+      int actualDiff = -1;
+      int currSwapPosition = 0;
+      for (int j=i+1 ; j<w.length() ; j++) {
+        char internalChar = w.charAt(j);
+        int internalDiff = internalChar-actual;
+        if (internalDiff>0 && internalDiff>actualDiff) {
+          actualDiff = internalDiff;
+          currSwapPosition = j;
+        }
+      }
+      if (currSwapPosition !=0) {
+        String s = w.substring(0, i) + w.substring(currSwapPosition, currSwapPosition + 1) + w.substring(i+1, currSwapPosition) + w.substring(i, i+1) + w.substring(currSwapPosition+1);
+        return s;
+      }
+    }
+    return "no answer";
+  }
+
+  /*
    * Complete the 'maximumPerimeterTriangle' function below.
    *
    * The function is expected to return an INTEGER_ARRAY.
