@@ -19,29 +19,17 @@ public class HackerRankSolutions {
 
   //    Complete the hackerrankInString function in the editor below. It must return YES or NO.
 //    For each query, print YES on a new line if s contains 'hackerrank', otherwise, print NO.
-  static String hackerrankInString(String s) {
-
-    List<String> listOfStrings = Arrays.asList(s.split("\\R"));
-    String returnedString = "";
+  public static String hackerrankInString(String s) {
     char[] hackerrank = {'h', 'a', 'c', 'k', 'e', 'r', 'r', 'a', 'n', 'k'};
-    for (String str : listOfStrings) {
-      int currentPositionInString = 0;
-      boolean contain = true;
-      for (char c : hackerrank) {
-        if (str.substring(currentPositionInString).contains(String.valueOf(c))) {
-          currentPositionInString = str.substring(currentPositionInString).indexOf(String.valueOf(c));
-        } else {
-          contain = false;
-          break;
-        }
-      }
-      if (contain) {
-        returnedString = returnedString.concat("YES\n");
+    int currentPositionInString = 0;
+    for (char c : hackerrank) {
+      if (s.substring(currentPositionInString).contains(String.valueOf(c))) {
+        currentPositionInString = s.substring(currentPositionInString).indexOf(String.valueOf(c));
       } else {
-        returnedString = returnedString.concat("NO\n");
+        return "NO";
       }
     }
-    return returnedString;
+    return "YES";
   }
 
   // Complete the marsExploration function below. Check the number of errors in SOSSOSSOS chain
@@ -1479,7 +1467,7 @@ public class HackerRankSolutions {
   public static String organizingContainers(List<List<Integer>> container) {
     Map<Integer, Integer> numberOfBallsOfEachType = new HashMap<>();
     for (List<Integer> list : container) {
-      for (int i=0 ; i<list.size() ; i++) {
+      for (int i = 0; i < list.size(); i++) {
         if (!numberOfBallsOfEachType.containsKey(i)) {
           numberOfBallsOfEachType.put(i, list.get(i));
         } else {
@@ -1500,20 +1488,20 @@ public class HackerRankSolutions {
    */
 
   public static String biggerIsGreater(String w) {
-    for (int i=w.length()-2 ; i>=0 ; i--) {
+    for (int i = w.length() - 2; i >= 0; i--) {
       char actual = w.charAt(i);
       int actualDiff = -1;
       int currSwapPosition = 0;
-      for (int j=i+1 ; j<w.length() ; j++) {
+      for (int j = i + 1; j < w.length(); j++) {
         char internalChar = w.charAt(j);
-        int internalDiff = internalChar-actual;
-        if (internalDiff>0 && internalDiff>actualDiff) {
+        int internalDiff = internalChar - actual;
+        if (internalDiff > 0 && internalDiff > actualDiff) {
           actualDiff = internalDiff;
           currSwapPosition = j;
         }
       }
-      if (currSwapPosition !=0) {
-        String s = w.substring(0, i) + w.substring(currSwapPosition, currSwapPosition + 1) + w.substring(i+1, currSwapPosition) + w.substring(i, i+1) + w.substring(currSwapPosition+1);
+      if (currSwapPosition != 0) {
+        String s = w.substring(0, i) + w.substring(currSwapPosition, currSwapPosition + 1) + w.substring(i + 1, currSwapPosition) + w.substring(i, i + 1) + w.substring(currSwapPosition + 1);
         return s;
       }
     }
