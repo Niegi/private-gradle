@@ -21,10 +21,10 @@ public class HackerRankSolutions {
 //    For each query, print YES on a new line if s contains 'hackerrank', otherwise, print NO.
   public static String hackerrankInString(String s) {
     char[] hackerrank = {'h', 'a', 'c', 'k', 'e', 'r', 'r', 'a', 'n', 'k'};
-    int currentPositionInString = 0;
+    String substringLeft = s;
     for (char c : hackerrank) {
-      if (s.substring(currentPositionInString).contains(String.valueOf(c))) {
-        currentPositionInString = s.substring(currentPositionInString).indexOf(String.valueOf(c));
+      if (substringLeft.contains(String.valueOf(c))) {
+        substringLeft = substringLeft.substring(substringLeft.indexOf(String.valueOf(c))+1);
       } else {
         return "NO";
       }

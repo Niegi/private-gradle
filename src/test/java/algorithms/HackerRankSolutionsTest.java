@@ -15,8 +15,21 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class HackerRankSolutionsTest {
 
-  @Test
-  void hackerrankInString() {
+  @ParameterizedTest
+  @MethodSource("dataForHackerrankInString")
+  void hackerrankInStringTest(String input, String expected) {
+//    when
+    String actual = hackerrankInString(input);
+
+//    then
+    assertEquals(expected, actual);
+  }
+
+  private static Stream<Arguments> dataForHackerrankInString() {
+    return Stream.of(
+      Arguments.of("hhaacckkekraraannk", "YES"),
+      Arguments.of("rhbaasdndfsdskgbfefdbrsdfhuyatrjtcrtyytktjjt", "NO")
+    );
   }
 
   @Test
