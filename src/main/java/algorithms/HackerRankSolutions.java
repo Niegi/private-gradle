@@ -1748,6 +1748,20 @@ public class HackerRankSolutions {
     return llist;
   }
 
+  public static SinglyLinkedListNode deleteNode(SinglyLinkedListNode llist, int position) {
+    if (llist.next.equals(null) || llist.equals(null)) {
+      return null;
+    }
+    SinglyLinkedListNode currentNode = llist;
+    int currentPosition = 0;
+    while (currentPosition < position-1) {
+      currentNode = currentNode.next;
+      currentPosition++;
+    }
+    currentNode.next = currentNode.next.next;
+    return llist;
+  }
+
   /*
    * Complete the 'minimumLoss' function below.
    *
