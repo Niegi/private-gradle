@@ -1481,6 +1481,25 @@ public class HackerRankSolutions {
   }
 
   /*
+   * Complete the 'summingSeries' function below.
+   *
+   * The function is expected to return an INTEGER.
+   * The function accepts LONG_INTEGER n as parameter.
+   */
+
+  public static int summingSeries(long n) {
+    long seriesSum = 0;
+    for (long i=1 ; i<=n ; i++) {
+      seriesSum += computeOneSerie(i);
+    }
+    return (int) ((int) seriesSum % (Math.pow(10, 9) + 7));
+  }
+
+  private static long computeOneSerie(long number) {
+    return (long) (Math.pow(number, 2) - Math.pow(number-1, 2));
+  }
+
+  /*
    * Complete the 'biggerIsGreater' function below.
    *
    * The function is expected to return a STRING.

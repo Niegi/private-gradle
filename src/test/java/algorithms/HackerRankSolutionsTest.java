@@ -692,4 +692,20 @@ class HackerRankSolutionsTest {
       Arguments.of("fedcbabcd", "fedcbabdc")
     );
   }
+
+  @ParameterizedTest
+  @MethodSource("dataForSummingSeriesTest")
+  void summingSeriesTest(long input, int expected) {
+//    when
+    int actual = summingSeries(input);
+//    then
+    assertEquals(expected, actual);
+  }
+
+  static Stream<Arguments> dataForSummingSeriesTest() {
+    return Stream.of(
+      Arguments.of(2, 4),
+      Arguments.of(1, 1)
+    );
+  }
 }
