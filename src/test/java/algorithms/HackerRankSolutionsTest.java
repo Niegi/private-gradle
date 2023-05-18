@@ -708,4 +708,21 @@ class HackerRankSolutionsTest {
       Arguments.of(1, 1)
     );
   }
+
+  @ParameterizedTest
+  @MethodSource("dataForRestaurantTest")
+  void restaurantTest(int a, int b, int expectedOutput) {
+//    when
+    int actual = restaurant(a, b);
+
+//
+    assertEquals(expectedOutput, actual);
+  }
+
+  static Stream<Arguments> dataForRestaurantTest() {
+    return Stream.of(
+      Arguments.of(2, 2, 1),
+      Arguments.of(6, 9, 6)
+    );
+  }
 }

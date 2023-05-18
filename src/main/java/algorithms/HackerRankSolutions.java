@@ -24,7 +24,7 @@ public class HackerRankSolutions {
     String substringLeft = s;
     for (char c : hackerrank) {
       if (substringLeft.contains(String.valueOf(c))) {
-        substringLeft = substringLeft.substring(substringLeft.indexOf(String.valueOf(c))+1);
+        substringLeft = substringLeft.substring(substringLeft.indexOf(String.valueOf(c)) + 1);
       } else {
         return "NO";
       }
@@ -1489,14 +1489,14 @@ public class HackerRankSolutions {
 
   public static int summingSeries(long n) {
     long seriesSum = 0;
-    for (long i=1 ; i<=n ; i++) {
+    for (long i = 1; i <= n; i++) {
       seriesSum += computeOneSerie(i);
     }
     return (int) ((int) seriesSum % (Math.pow(10, 9) + 7));
   }
 
   private static long computeOneSerie(long number) {
-    return (long) (Math.pow(number, 2) - Math.pow(number-1, 2));
+    return (long) (Math.pow(number, 2) - Math.pow(number - 1, 2));
   }
 
   /*
@@ -1511,15 +1511,39 @@ public class HackerRankSolutions {
    */
 
   public static List<Double> movingTiles(int l, int s1, int s2, List<Integer> queries) {
-    double vDiff = (Math.abs(s2-s1))/2 * Math.sqrt(2);
+    double vDiff = (Math.abs(s2 - s1)) / 2 * Math.sqrt(2);
 //    List<Double> times = new ArrayList<>();
 //    for (int q : queries) {
 //      double time = (l - q)/vDiff;
 //      times.add(time);
 //    }
     return queries.stream()
-      .map(q -> ((l-Math.sqrt(q))*vDiff))
+      .map(q -> ((l - Math.sqrt(q)) * vDiff))
       .collect(Collectors.toList());
+  }
+
+  /*
+   * Complete the 'restaurant' function below.
+   *
+   * The function is expected to return an INTEGER.
+   * The function accepts following parameters:
+   *  1. INTEGER l
+   *  2. INTEGER b
+   */
+
+  public static int restaurant(int l, int b) {
+    int gcd = gcdByBruteForce(l, b);
+    return l/gcd * b/gcd;
+  }
+
+  private static int gcdByBruteForce(int n1, int n2) {
+    int gcd = 1;
+    for (int i = 1; i <= n1 && i <= n2; i++) {
+      if (n1 % i == 0 && n2 % i == 0) {
+        gcd = i;
+      }
+    }
+    return gcd;
   }
 
   /*
@@ -1796,7 +1820,7 @@ public class HackerRankSolutions {
     }
     SinglyLinkedListNode currentNode = llist;
     int currentPosition = 0;
-    while (currentPosition < position-1) {
+    while (currentPosition < position - 1) {
       currentNode = currentNode.next;
       currentPosition++;
     }
