@@ -1500,6 +1500,29 @@ public class HackerRankSolutions {
   }
 
   /*
+   * Complete the 'movingTiles' function below.
+   *
+   * The function is expected to return a DOUBLE_ARRAY.
+   * The function accepts following parameters:
+   *  1. INTEGER l
+   *  2. INTEGER s1
+   *  3. INTEGER s2
+   *  4. INTEGER_ARRAY queries
+   */
+
+  public static List<Double> movingTiles(int l, int s1, int s2, List<Integer> queries) {
+    double vDiff = (Math.abs(s2-s1))/2 * Math.sqrt(2);
+//    List<Double> times = new ArrayList<>();
+//    for (int q : queries) {
+//      double time = (l - q)/vDiff;
+//      times.add(time);
+//    }
+    return queries.stream()
+      .map(q -> ((l-Math.sqrt(q))*vDiff))
+      .collect(Collectors.toList());
+  }
+
+  /*
    * Complete the 'biggerIsGreater' function below.
    *
    * The function is expected to return a STRING.
