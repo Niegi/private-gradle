@@ -725,4 +725,22 @@ class HackerRankSolutionsTest {
       Arguments.of(6, 9, 6)
     );
   }
+
+  @ParameterizedTest
+  @MethodSource("dataForLightsTest")
+  void lightsTest(int input, int expectedOutput) {
+//    when
+    long actual = lights(input);
+
+//
+    assertEquals(expectedOutput, actual);
+  }
+
+  static Stream<Arguments> dataForLightsTest() {
+    return Stream.of(
+      Arguments.of(5, 31),
+      Arguments.of(20, 8575),
+      Arguments.of(534, 48735)
+    );
+  }
 }

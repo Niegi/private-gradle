@@ -1547,6 +1547,26 @@ public class HackerRankSolutions {
   }
 
   /*
+   * Complete the 'lights' function below.
+   *
+   * The function is expected to return a LONG_INTEGER.
+   * The function accepts INTEGER n as parameter.
+   */
+
+  public static long lights(int n) {
+    return myPower(2, n) % 100000 - 1;
+  }
+
+  private static long myPower(long base, int exponent) {
+    long ans = base;
+    for (int i=1 ; i<exponent ; i++) {
+      ans *= base;
+      ans = ans % 100000;
+    }
+    return ans;
+  }
+
+  /*
    * Complete the 'biggerIsGreater' function below.
    *
    * The function is expected to return a STRING.
