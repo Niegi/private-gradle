@@ -1533,7 +1533,7 @@ public class HackerRankSolutions {
 
   public static int restaurant(int l, int b) {
     int gcd = gcdByBruteForce(l, b);
-    return l/gcd * b/gcd;
+    return l / gcd * b / gcd;
   }
 
   private static int gcdByBruteForce(int n1, int n2) {
@@ -1559,11 +1559,29 @@ public class HackerRankSolutions {
 
   private static long myPower(long base, int exponent) {
     long ans = base;
-    for (int i=1 ; i<exponent ; i++) {
+    for (int i = 1; i < exponent; i++) {
       ans *= base;
       ans = ans % 100000;
     }
     return ans;
+  }
+
+  /*
+   * Complete the 'connectingTowns' function below.
+   *
+   * The function is expected to return an INTEGER.
+   * The function accepts following parameters:
+   *  1. INTEGER n
+   *  2. INTEGER_ARRAY routes
+   */
+
+  public static int connectingTowns(int n, List<Integer> routes) {
+    long sum = routes.get(0);
+    for (int i = 1; i < routes.size(); i++) {
+      sum *= (routes.get(i));
+      sum = sum % 1234567;
+    }
+    return (int) sum;
   }
 
   /*

@@ -743,4 +743,21 @@ class HackerRankSolutionsTest {
       Arguments.of(534, 48735)
     );
   }
+
+  @ParameterizedTest
+  @MethodSource("dataForConnectingTownsTest")
+  void connectingTownsTest(List<Integer> input, int expectedOutput) {
+//    when
+    int actual = connectingTowns(0, input);
+
+//
+    assertEquals(expectedOutput, actual);
+  }
+
+  static Stream<Arguments> dataForConnectingTownsTest() {
+    return Stream.of(
+      Arguments.of(List.of(1234566, 1234566), 1),
+      Arguments.of(List.of(Integer.MAX_VALUE, Integer.MAX_VALUE), 236396)
+    );
+  }
 }
