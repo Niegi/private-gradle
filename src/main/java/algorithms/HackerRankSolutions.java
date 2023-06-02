@@ -1702,6 +1702,19 @@ public class HackerRankSolutions {
   }
 
   /*
+   * Complete the 'paperCut' function below.
+   *
+   * The function is expected to return a LONG_INTEGER.
+   * The function accepts following parameters:
+   *  1. INTEGER n
+   *  2. INTEGER m
+   */
+
+  public static long paperCut(int n, int m) {
+    return (long) n *m - 1;
+  }
+
+  /*
    * Complete the 'missingNumbers' function below.
    *
    * The function is expected to return an INTEGER_ARRAY.

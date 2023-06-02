@@ -760,4 +760,21 @@ class HackerRankSolutionsTest {
       Arguments.of(List.of(Integer.MAX_VALUE, Integer.MAX_VALUE), 236396)
     );
   }
+
+  @ParameterizedTest
+  @MethodSource("dataForPaperCutTest")
+  void paperCutTest(int a, int b, long expectedOutput) {
+//    when
+    long actual = paperCut(a, b);
+
+//
+    assertEquals(expectedOutput, actual);
+  }
+
+  static Stream<Arguments> dataForPaperCutTest() {
+    return Stream.of(
+            Arguments.of(2, 3, 5),
+            Arguments.of(1_000_000_000, 1_000_000_000,  999999999999999999L)
+    );
+  }
 }
