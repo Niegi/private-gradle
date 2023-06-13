@@ -777,4 +777,17 @@ class HackerRankSolutionsTest {
             Arguments.of(1_000_000_000, 1_000_000_000,  999999999999999999L)
     );
   }
+
+  @Test
+  void handshakeTest() {
+//    given
+    int numberOfAttendees = 5;
+    int expectedNumberOfHandshakes = 10;
+
+//    when
+    int actualNumberOfHandshakes = handshake(numberOfAttendees);
+
+//    then
+    assertEquals(expectedNumberOfHandshakes, actualNumberOfHandshakes);
+  }
 }

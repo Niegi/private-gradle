@@ -1613,6 +1613,21 @@ public class HackerRankSolutions {
   }
 
   /*
+   * Complete the 'handshake' function below.
+   *
+   * The function is expected to return an INTEGER.
+   * The function accepts INTEGER n as parameter.
+   */
+
+  public static int handshake(int n) {
+    int sum = 0;
+    for (int i=1 ; i<n ; i++) {
+      sum += i;
+    }
+    return sum;
+  }
+
+  /*
    * Complete the 'maximumPerimeterTriangle' function below.
    *
    * The function is expected to return an INTEGER_ARRAY.
