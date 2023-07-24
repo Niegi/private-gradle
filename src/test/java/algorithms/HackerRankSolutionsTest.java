@@ -790,4 +790,22 @@ class HackerRankSolutionsTest {
 //    then
     assertEquals(expectedNumberOfHandshakes, actualNumberOfHandshakes);
   }
+
+  @ParameterizedTest
+  @MethodSource("dataForMaximumDrawsTest")
+  void maximumDrawsTest(int input, int expected) {
+//    when
+    int actual = maximumDraws(input);
+
+//    then
+    assertEquals(expected, actual);
+  }
+
+  private static Stream<Arguments> dataForMaximumDrawsTest() {
+    return Stream.of(
+            Arguments.of(1 ,2),
+            Arguments.of(3 ,4),
+            Arguments.of(10 ,11)
+    );
+  }
 }
