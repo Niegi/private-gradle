@@ -26,14 +26,15 @@ dependencies {
             'io.projectreactor:reactor-core:3.3.10.RELEASE',
             'com.google.code.gson:gson:2.8.9',
             'io.rest-assured:rest-assured:5.3.0',
-            'org.hamcrest:hamcrest:2.2'
+            'org.hamcrest:hamcrest:2.2',
+            'org.seleniumhq.selenium:selenium-java:4.11.0',
+            'org.seleniumhq.selenium:selenium-chrome-driver:4.11.0'
     )
 
     testRuntimeOnly(
             'org.junit.jupiter:junit-jupiter-engine:5.5.2',
             'org.junit.platform:junit-platform-launcher:1.5.2'
     )
-    implementation 'junit:junit:4.13.1'
 }
 
 task showDate {
