@@ -1639,6 +1639,19 @@ public class HackerRankSolutions {
   }
 
   /*
+   * Complete the 'gameWithCells' function below.
+   *
+   * The function is expected to return an INTEGER.
+   * The function accepts following parameters:
+   *  1. INTEGER n
+   *  2. INTEGER m
+   */
+
+  public static int gameWithCells(int n, int m) {
+    return ((n+1)/2) * ((m+1)/2);
+  }
+
+  /*
    * Complete the 'maximumPerimeterTriangle' function below.
    *
    * The function is expected to return an INTEGER_ARRAY.

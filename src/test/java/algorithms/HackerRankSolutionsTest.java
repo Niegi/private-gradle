@@ -808,4 +808,21 @@ class HackerRankSolutionsTest {
             Arguments.of(10 ,11)
     );
   }
+
+  @ParameterizedTest
+  @MethodSource("dataForGameWithCellsTest")
+  void gameWithCellsTest(int m, int n, int expected) {
+//    when
+    int actual = gameWithCells(m, n);
+
+//    then
+    assertEquals(expected, actual);
+  }
+
+  public static Stream<Arguments> dataForGameWithCellsTest() {
+    return Stream.of(
+      Arguments.of(4, 5, 6),
+      Arguments.of(2, 2, 1)
+    );
+  }
 }
