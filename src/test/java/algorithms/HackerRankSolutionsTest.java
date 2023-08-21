@@ -825,4 +825,20 @@ class HackerRankSolutionsTest {
       Arguments.of(2, 2, 1)
     );
   }
+
+  @ParameterizedTest
+  @MethodSource("dataForSolveTest")
+  void solveTest(List<List<Integer>> points, double expected) {
+//    when
+    double actual = solve(points);
+
+//    then
+    assertEquals(expected, actual);
+  }
+
+  public static Stream<Arguments> dataForSolveTest() {
+    return Stream.of(
+      Arguments.of(List.of(List.of(-1, 0), List.of(1, 0), List.of(0, 1), List.of(0, -1)), 2.0)
+    );
+  }
 }

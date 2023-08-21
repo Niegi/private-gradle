@@ -1,4 +1,4 @@
-package coforge;
+package other.coforge;
 
 public class Triangle extends Shape {
   private static final int TRIANGLE_SIDES = 3;

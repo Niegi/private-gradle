@@ -1,4 +1,4 @@
-package coforge;
+package other.coforge;
 
 abstract class Shape {
 

@@ -1,4 +1,4 @@
-package coforge;
+package other.coforge;
 
 public class Square extends Shape {
   private static final int SQUARE_SIDES = 4;

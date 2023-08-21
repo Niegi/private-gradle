@@ -1652,6 +1652,31 @@ public class HackerRankSolutions {
   }
 
   /*
+   * Complete the 'solve' function below.
+   *
+   * The function is expected to return a DOUBLE.
+   * The function accepts 2D_INTEGER_ARRAY coordinates as parameter.
+   */
+
+  public static double solve(List<List<Integer>> coordinates) {
+    List<List<Integer>> vectors = new ArrayList<>();
+    for (int i=0 ; i<coordinates.size()-1 ; i++) {
+      for (int j=i+1 ; j<coordinates.size() ; j++) {
+        vectors.add(List.of(coordinates.get(j).get(0)-coordinates.get(i).get(0), coordinates.get(j).get(1)-coordinates.get(i).get(1)));
+      }
+    }
+    List<Double> vectorsLength = calculateVectorsLength(vectors);
+    return Collections.max(vectorsLength);
+  }
+
+  private static List<Double> calculateVectorsLength(List<List<Integer>> vectors) {
+    return vectors.stream()
+      .map(vector -> Math.pow(vector.get(0), 2) + Math.pow(vector.get(1), 2))
+      .map(Math::sqrt)
+      .collect(Collectors.toList());
+  }
+
+  /*
    * Complete the 'maximumPerimeterTriangle' function below.
    *
    * The function is expected to return an INTEGER_ARRAY.
