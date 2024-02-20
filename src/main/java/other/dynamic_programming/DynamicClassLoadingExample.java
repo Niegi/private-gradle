@@ -1,6 +1,6 @@
 package other.dynamic_programming;
 
-public class DynamicClassExample {
+public class DynamicClassLoadingExample {
 
   public static void main(String[] args) {
     try {
